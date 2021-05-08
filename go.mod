@@ -1,4 +1,4 @@
-module github.com/fote/telegram-site-monitoring
+module github.com/FerestGo/tg-balancer
 
 go 1.16
 

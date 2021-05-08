@@ -1,9 +1,9 @@
 package main
 
 import (
-	"TgBalancer/pkg/config"
-	"TgBalancer/pkg/router"
 	"fmt"
+	"github.com/FerestGo/tg-balancer/pkg/config"
+	"github.com/FerestGo/tg-balancer/pkg/router"
 	tgbotapi "github.com/Syfaro/telegram-bot-api"
 )
 
