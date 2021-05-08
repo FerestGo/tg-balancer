@@ -1,0 +1,476 @@
+{
+  "AKCH": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "RUB",
+    "Region": "China"
+  },
+  "AKEU": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "EUR",
+    "Region": "Europe"
+  },
+  "AKMB": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "AKME": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "AKNX": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AKSP": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMCC": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMDG": {
+    "Class": "Stock",
+    "SubClass": "Dividend Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMEM": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "AMGF": {
+    "Class": "Stock",
+    "SubClass": "Factorial Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMGM": {
+    "Class": "Stock",
+    "SubClass": "Gold",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "AMGR": {
+    "Class": "Stock",
+    "SubClass": "Biotechnology and medicine",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMHC": {
+    "Class": "Stock",
+    "SubClass": "Biotechnology and medicine",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMHY": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "AMIG": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMIN": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMLV": {
+    "Class": "Stock",
+    "SubClass": "Factorial Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMMF": {
+    "Class": "Stock",
+    "SubClass": "Factorial Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMRB": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "AMRE": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "AMSC": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "AMSL": {
+    "Class": "Exchange-traded goods",
+    "SubClass": "Серебро",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "AMVF": {
+    "Class": "Stock",
+    "SubClass": "Factorial Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "BCSB": {
+    "Class": "Bond",
+    "SubClass": "ВДО",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "DIVD": {
+    "Class": "Stock",
+    "SubClass": "Dividend Stock",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "ESGR": {
+    "Class": "Stock",
+    "SubClass": "ESG",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "FMUS": {
+    "Class": "Stock",
+    "SubClass": "Dividend Stock",
+    "Currency": "RUB",
+    "Region": "USA"
+  },
+  "FXCN": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "China"
+  },
+  "FXDE": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "EUR",
+    "Region": "Europe"
+  },
+  "FXDM": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "FXFA": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "FXGD": {
+    "Class": "Exchange-traded goods",
+    "SubClass": "Gold",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "FXIM": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "FXIT": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "FXKZ": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "KZT",
+    "Region": "Казахстан"
+  },
+  "FXMM": {
+    "Class": "Bond",
+    "SubClass": "Госдолг",
+    "Currency": "RUB",
+    "Region": "USA"
+  },
+  "FXRB": {
+    "Class": "Bond",
+    "SubClass": "EuroBond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "FXRL": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "Russia"
+  },
+  "FXRU": {
+    "Class": "Bond",
+    "SubClass": "EuroBond",
+    "Currency": "USD",
+    "Region": "Russia"
+  },
+  "FXRW": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "RUB",
+    "Region": "World"
+  },
+  "FXTB": {
+    "Class": "Bond",
+    "SubClass": "Госдолг",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "FXUS": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "FXWO": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "GPBM": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "GPBS": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "MTEK": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "RUB",
+    "Region": "USA"
+  },
+  "OPNW": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "PRIE": {
+    "Class": "Bond",
+    "SubClass": "EuroBond",
+    "Currency": "USD",
+    "Region": "Russia"
+  },
+  "RCMB": {
+    "Class": "Bond",
+    "SubClass": "EuroBond",
+    "Currency": "USD",
+    "Region": "Russia"
+  },
+  "RCMX": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "RUSB": {
+    "Class": "Bond",
+    "SubClass": "EuroBond",
+    "Currency": "USD",
+    "Region": "Russia"
+  },
+  "RUSE": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "Russia"
+  },
+  "SBCB": {
+    "Class": "Bond",
+    "SubClass": "EuroBond",
+    "Currency": "USD",
+    "Region": "Russia"
+  },
+  "SBGB": {
+    "Class": "Bond",
+    "SubClass": "Госдолг",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "SBMX": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "SBRB": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "SBRI": {
+    "Class": "Stock",
+    "SubClass": "ESG",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "SBSP": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "SCIP": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "SUGB": {
+    "Class": "Bond",
+    "SubClass": "Госдолг",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "TBIO": {
+    "Class": "Stock",
+    "SubClass": "Biotechnology and medicine",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "TECH": {
+    "Class": "Stock",
+    "SubClass": "IT Stock",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "TEUR": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "EUR",
+    "Region": "Europe"
+  },
+  "TGLD": {
+    "Class": "Exchange-traded goods",
+    "SubClass": "Gold",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "TIPO": {
+    "Class": "Stock",
+    "SubClass": "IPO",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "TMOS": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "TRUR": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "TSPV": {
+    "Class": "Stock",
+    "SubClass": "IPO",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "TSPX": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "TUSD": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "VTBA": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "VTBB": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "VTBE": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "VTBG": {
+    "Class": "Exchange-traded goods",
+    "SubClass": "Gold",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "VTBH": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "USD",
+    "Region": "USA"
+  },
+  "VTBM": {
+    "Class": "Bond",
+    "SubClass": "Денежный рынок",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "VTBU": {
+    "Class": "Bond",
+    "SubClass": "EuroBond",
+    "Currency": "USD",
+    "Region": "Russia"
+  },
+  "VTBX": {
+    "Class": "Stock",
+    "SubClass": "Широкий рынок",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "VTBY": {
+    "Class": "Bond",
+    "SubClass": "EuroBond",
+    "Currency": "EUR",
+    "Region": "World"
+  }
+}
