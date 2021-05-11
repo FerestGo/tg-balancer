@@ -1,56 +1,58 @@
 package balancer
 
 import (
-	"fmt"
+	"golang.org/x/text/language"
+	"golang.org/x/text/message"
 )
 
 func output(portfolio *Portfolio) string {
+	printer := message.NewPrinter(language.Russian)
 	output := ""
-	output += fmt.Sprintf("Всего средств: %.2f руб. \n\n", portfolio.Total)
-	output += fmt.Sprintf("Валюты: \n")
-	output += fmt.Sprintf("RUB %.2f%% \n", portfolio.PercentCurrency.RUB)
-	output += fmt.Sprintf("USD %.2f%% \n", portfolio.PercentCurrency.USD)
-	output += fmt.Sprintf("EUR %.2f%% \n\n", portfolio.PercentCurrency.EUR)
+	output += printer.Sprintf("Всего средств: %.0f руб. \n\n", portfolio.Total)
+	output += printer.Sprintf("Валюты: \n")
+	output += printer.Sprintf("RUB %.0f%% (%.0f р.) \n", portfolio.PercentCurrency.RUB, portfolio.Currency.RUB)
+	output += printer.Sprintf("USD %.0f%% (%.0f р.) \n", portfolio.PercentCurrency.USD, portfolio.Currency.USD)
+	output += printer.Sprintf("EUR %.0f%% (%.0f р.) \n\n", portfolio.PercentCurrency.EUR, portfolio.Currency.EUR)
 
-	output += fmt.Sprintf("Инструменты: \n")
-	output += fmt.Sprintf("Акции %.2f%% \n", portfolio.PercentType.Stock)
-	output += fmt.Sprintf("Облигации %.2f%% \n", portfolio.PercentType.Bonds)
+	output += printer.Sprintf("Инструменты: \n")
+	output += printer.Sprintf("Акции %.0f%% (%.0f р.) \n", portfolio.PercentType.Stock, portfolio.Types.Stock)
+	output += printer.Sprintf("Облигации %.0f%% (%.0f р.) \n", portfolio.PercentType.Bonds, portfolio.Types.Bonds)
 	if portfolio.PercentType.UndefinedEtf > 0 {
-		output += fmt.Sprintf("Неизвестные ETF %.2f%% \n", portfolio.PercentType.UndefinedEtf)
+		output += printer.Sprintf("Неизвестные ETF %.0f%% (%.0f р.) \n", portfolio.PercentType.UndefinedEtf, portfolio.Types.UndefinedEtf)
 
 	}
-	output += fmt.Sprintf("Валюта %.2f%% \n", portfolio.PercentType.Currency)
-	output += fmt.Sprintf("Золото %.2f%% \n\n", portfolio.PercentType.Gold)
+	output += printer.Sprintf("Валюта %.0f%% (%.0f р.) \n", portfolio.PercentType.Currency, portfolio.Types.Currency)
+	output += printer.Sprintf("Золото %.0f%% (%.0f р.) \n\n", portfolio.PercentType.Gold, portfolio.Types.Gold)
 
-	output += fmt.Sprintf("Инструменты без валют: \n")
-	output += fmt.Sprintf("Акции %.2f%% \n", portfolio.PercentTypeNoCurrency.Stock)
-	output += fmt.Sprintf("Облигации %.2f%% \n", portfolio.PercentTypeNoCurrency.Bonds)
+	output += printer.Sprintf("Инструменты без валют: \n")
+	output += printer.Sprintf("Акции %.0f%% (%.0f р.) \n", portfolio.PercentTypeNoCurrency.Stock, portfolio.Types.Stock)
+	output += printer.Sprintf("Облигации %.0f%% (%.0f р.) \n", portfolio.PercentTypeNoCurrency.Bonds, portfolio.Types.Bonds)
 	if portfolio.PercentType.UndefinedEtf > 0 {
-		output += fmt.Sprintf("Неизвестные ETF %.2f%% \n\n", portfolio.PercentTypeNoCurrency.UndefinedEtf)
+		output += printer.Sprintf("Неизвестные ETF %.0f%% (%.0f р.) \n\n", portfolio.PercentTypeNoCurrency.UndefinedEtf, portfolio.Types.UndefinedEtf)
 
 	}
-	output += fmt.Sprintf("Золото %.2f%% \n\n", portfolio.PercentTypeNoCurrency.Gold)
+	output += printer.Sprintf("Золото %.0f%% (%.0f р.) \n\n", portfolio.PercentTypeNoCurrency.Gold, portfolio.Types.Gold)
 
-	output += fmt.Sprintf("Акции по регионам: \n")
-	output += fmt.Sprintf("США %.2f%% \n", portfolio.StockPercentRegion.USA)
-	output += fmt.Sprintf("Россия %.2f%% \n", portfolio.StockPercentRegion.RU)
-	output += fmt.Sprintf("Европа %.2f%% \n", portfolio.StockPercentRegion.Europe)
-	output += fmt.Sprintf("Китай %.2f%% \n", portfolio.StockPercentRegion.China)
-	output += fmt.Sprintf("Мир %.2f%% \n", portfolio.StockPercentRegion.World)
-	//output += fmt.Sprintf("Развивающиеся %.2f%% \n", portfolio.StockPercentRegion.Developing)
+	output += printer.Sprintf("Акции по регионам: \n")
+	output += printer.Sprintf("США %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.USA, portfolio.StockRegion.USA)
+	output += printer.Sprintf("Россия %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.RU, portfolio.StockRegion.RU)
+	output += printer.Sprintf("Европа %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.Europe, portfolio.StockRegion.Europe)
+	output += printer.Sprintf("Китай %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.China, portfolio.StockRegion.China)
+	output += printer.Sprintf("Мир %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.World, portfolio.StockRegion.World)
+	//output += printer.Sprintf("Развивающиеся %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.Developing)
 	if portfolio.StockPercentRegion.Undefined > 0 {
-		output += fmt.Sprintf("Неопределенные %.2f%% \n\n", portfolio.StockPercentRegion.Undefined)
+		output += printer.Sprintf("Неопределенные %.0f%% (%.0f р.) \n\n", portfolio.StockPercentRegion.Undefined, portfolio.StockRegion.Undefined)
 	}
 
-	output += fmt.Sprintf("Весь портфель по регионам: \n")
-	output += fmt.Sprintf("США %.2f%% \n", portfolio.PercentRegion.USA)
-	output += fmt.Sprintf("Россия %.2f%% \n", portfolio.PercentRegion.RU)
-	output += fmt.Sprintf("Европа %.2f%% \n", portfolio.PercentRegion.Europe)
-	output += fmt.Sprintf("Китай %.2f%% \n", portfolio.PercentRegion.China)
-	output += fmt.Sprintf("Мир %.2f%% \n", portfolio.PercentRegion.World)
-	//output += fmt.Sprintf("Развивающиеся %.2f%% \n", portfolio.PercentRegion.Developing)
+	output += printer.Sprintf("Весь портфель по регионам: \n")
+	output += printer.Sprintf("США %.0f%% (%.0f р.) \n", portfolio.PercentRegion.USA, portfolio.Region.USA)
+	output += printer.Sprintf("Россия %.0f%% (%.0f р.) \n", portfolio.PercentRegion.RU, portfolio.Region.RU)
+	output += printer.Sprintf("Европа %.0f%% (%.0f р.) \n", portfolio.PercentRegion.Europe, portfolio.Region.Europe)
+	output += printer.Sprintf("Китай %.0f%% (%.0f р.) \n", portfolio.PercentRegion.China, portfolio.Region.China)
+	output += printer.Sprintf("Мир %.0f%% (%.0f р.) \n", portfolio.PercentRegion.World, portfolio.Region.World)
+	//output += printer.Sprintf("Развивающиеся %.0f%% (%.0f р.) \n", portfolio.PercentRegion.Developing)
 	if portfolio.PercentRegion.Undefined > 0 {
-		output += fmt.Sprintf("Неопределенные %.2f%%", portfolio.PercentRegion.Undefined)
+		output += printer.Sprintf("Неопределенные %.0f%%", portfolio.PercentRegion.Undefined)
 	}
 	return output
 }
