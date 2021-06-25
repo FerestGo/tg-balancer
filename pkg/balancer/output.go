@@ -8,7 +8,7 @@ import (
 func output(portfolio *Portfolio) string {
 	printer := message.NewPrinter(language.Russian)
 	output := ""
-	output += printer.Sprintf("Всего средств: %.0f руб. \n\n", portfolio.Total)
+	output += printer.Sprintf("Всего средств: %.2f руб. \n\n", portfolio.Total)
 	output += printer.Sprintf("Валюты: \n")
 	output += printer.Sprintf("RUB %.0f%% (%.0f р.) \n", portfolio.PercentCurrency.RUB, portfolio.Currency.RUB)
 	output += printer.Sprintf("USD %.0f%% (%.0f р.) \n", portfolio.PercentCurrency.USD, portfolio.Currency.USD)
@@ -24,7 +24,7 @@ func output(portfolio *Portfolio) string {
 	output += printer.Sprintf("Валюта %.0f%% (%.0f р.) \n", portfolio.PercentType.Currency, portfolio.Types.Currency)
 	output += printer.Sprintf("Золото %.0f%% (%.0f р.) \n\n", portfolio.PercentType.Gold, portfolio.Types.Gold)
 
-	output += printer.Sprintf("Инструменты без валют: \n")
+	output += printer.Sprintf("Инструменты без валюты: \n")
 	output += printer.Sprintf("Акции %.0f%% (%.0f р.) \n", portfolio.PercentTypeNoCurrency.Stock, portfolio.Types.Stock)
 	output += printer.Sprintf("Облигации %.0f%% (%.0f р.) \n", portfolio.PercentTypeNoCurrency.Bonds, portfolio.Types.Bonds)
 	if portfolio.PercentType.UndefinedEtf > 0 {
