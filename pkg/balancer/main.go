@@ -24,7 +24,6 @@ func initAnalysis(ctx context.Context, message string) string {
 	token := strings.TrimSpace(namePattern.FindString(message))
 
 	client = *sdk.NewRestClient(token)
-	//client = *sdk.NewRestClient("t.mJeCiRVPjIfFO2zFobhGJil9tfZVm6gzs1LoLeL7Bcl85SybNrQ0lWkzZT56r-uNrC1J1-8N-WPPRP6xxXSnYw")
 
 	accounts, err := client.Accounts(ctx)
 	if err != nil {
