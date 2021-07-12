@@ -29,17 +29,13 @@ func initAnalysis(ctx context.Context, message string) string {
 	if err != nil {
 		return "Неверный токен"
 	}
-
-	mainPortfolio, _ := client.Portfolio(ctx, accounts[0].ID)
-	errorHandle(err)
-
-	iisPortfolio, _ := client.Portfolio(ctx, accounts[1].ID)
-	errorHandle(err)
-
 	var userPortfolio Portfolio
+	var portfolio sdk.Portfolio
 
-	userPortfolio.Analysis(mainPortfolio)
-	userPortfolio.Analysis(iisPortfolio)
+	for _, account := range accounts {
+		portfolio, _ = client.Portfolio(ctx, account.ID)
+		userPortfolio.Analysis(portfolio)
+	}
 
 	userPortfolio.SetPercent()
 
