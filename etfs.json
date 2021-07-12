@@ -17,6 +17,12 @@
     "Currency": "RUB",
     "Region": "Russia"
   },
+  "AKMD": {
+    "Class": "Stock",
+    "SubClass": "Biotechnology and medicine",
+    "Currency": "USD",
+    "Region": "USA"
+  },
   "AKME": {
     "Class": "Stock",
     "SubClass": "Широкий рынок",
@@ -81,7 +87,7 @@
     "Class": "Bond",
     "SubClass": "Corporate Bond",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "USA"
   },
   "AMIG": {
     "Class": "Bond",
@@ -155,6 +161,12 @@
     "Currency": "RUB",
     "Region": "Russia"
   },
+  "FMRU": {
+    "Class": "Stock",
+    "SubClass": "Dividend Stock",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
   "FMUS": {
     "Class": "Stock",
     "SubClass": "Dividend Stock",
@@ -195,6 +207,12 @@
     "Class": "Stock",
     "SubClass": "IT Stock",
     "Currency": "USD",
+    "Region": "USA"
+  },
+  "FXIP": {
+    "Class": "Bond",
+    "SubClass": "Госдолг",
+    "Currency": "RUB",
     "Region": "USA"
   },
   "FXIT": {
@@ -245,6 +263,12 @@
     "Currency": "USD",
     "Region": "USA"
   },
+  "FXTP": {
+    "Class": "Bond",
+    "SubClass": "Госдолг",
+    "Currency": "USD",
+    "Region": "USA"
+  },
   "FXUS": {
     "Class": "Stock",
     "SubClass": "Широкий рынок",
@@ -266,6 +290,12 @@
   "GPBS": {
     "Class": "Bond",
     "SubClass": "Corporate Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "GROD": {
+    "Class": "Stock",
+    "SubClass": "Factorial Stock",
     "Currency": "RUB",
     "Region": "Russia"
   },
@@ -317,6 +347,18 @@
     "Currency": "USD",
     "Region": "Russia"
   },
+  "SBCS": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "SBDS": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "RUB",
+    "Region": "World"
+  },
   "SBGB": {
     "Class": "Bond",
     "SubClass": "Госдолг",
@@ -328,6 +370,12 @@
     "SubClass": "Широкий рынок",
     "Currency": "RUB",
     "Region": "Russia"
+  },
+  "SBPS": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "RUB",
+    "Region": "World"
   },
   "SBRB": {
     "Class": "Bond",
@@ -341,17 +389,41 @@
     "Currency": "RUB",
     "Region": "Russia"
   },
+  "SBRS": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
   "SBSP": {
     "Class": "Stock",
     "SubClass": "Широкий рынок",
     "Currency": "USD",
     "Region": "USA"
   },
+  "SBWS": {
+    "Class": "Mixed",
+    "SubClass": "Mixed",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
   "SCIP": {
     "Class": "Stock",
     "SubClass": "IT Stock",
     "Currency": "USD",
     "Region": "USA"
+  },
+  "SPBC": {
+    "Class": "Bond",
+    "SubClass": "Corporate Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "SPBF": {
+    "Class": "Bond",
+    "SubClass": "Госдолг",
+    "Currency": "RUB",
+    "Region": "Russia"
   },
   "SUGB": {
     "Class": "Bond",
@@ -364,6 +436,12 @@
     "SubClass": "Biotechnology and medicine",
     "Currency": "USD",
     "Region": "USA"
+  },
+  "TBRU": {
+    "Class": "Bond",
+    "SubClass": "ВДО",
+    "Currency": "RUB",
+    "Region": "Russia"
   },
   "TECH": {
     "Class": "Stock",
@@ -380,6 +458,12 @@
   "TGLD": {
     "Class": "Exchange-traded goods",
     "SubClass": "Gold",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "TGRN": {
+    "Class": "Stock",
+    "SubClass": "ESG",
     "Currency": "USD",
     "Region": "World"
   },
