@@ -41,10 +41,10 @@ func output(portfolio *Portfolio) string {
 	output += printer.Sprintf("Мир %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.World, portfolio.StockRegion.World)
 	//output += printer.Sprintf("Развивающиеся %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.Developing)
 	if portfolio.StockPercentRegion.Undefined > 0 {
-		output += printer.Sprintf("Неопределенные %.0f%% (%.0f р.) \n\n", portfolio.StockPercentRegion.Undefined, portfolio.StockRegion.Undefined)
+		output += printer.Sprintf("Неопределенные %.0f%% (%.0f р.)", portfolio.StockPercentRegion.Undefined, portfolio.StockRegion.Undefined)
 	}
 
-	output += printer.Sprintf("Весь портфель по регионам: \n")
+	output += printer.Sprintf("\nВесь портфель по регионам: \n")
 	output += printer.Sprintf("США %.0f%% (%.0f р.) \n", portfolio.PercentRegion.USA, portfolio.Region.USA)
 	output += printer.Sprintf("Россия %.0f%% (%.0f р.) \n", portfolio.PercentRegion.RU, portfolio.Region.RU)
 	output += printer.Sprintf("Европа %.0f%% (%.0f р.) \n", portfolio.PercentRegion.Europe, portfolio.Region.Europe)
@@ -52,7 +52,7 @@ func output(portfolio *Portfolio) string {
 	output += printer.Sprintf("Мир %.0f%% (%.0f р.) \n", portfolio.PercentRegion.World, portfolio.Region.World)
 	//output += printer.Sprintf("Развивающиеся %.0f%% (%.0f р.) \n", portfolio.PercentRegion.Developing)
 	if portfolio.PercentRegion.Undefined > 0 {
-		output += printer.Sprintf("Неопределенные %.0f%%", portfolio.PercentRegion.Undefined)
+		output += printer.Sprintf("Неопределенные %.0f%% (%.0f р.)", portfolio.PercentRegion.Undefined, portfolio.PercentRegion.Undefined)
 	}
 	return output
 }

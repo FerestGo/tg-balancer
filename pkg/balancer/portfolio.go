@@ -121,6 +121,9 @@ func AddAllWeatherEtf(position Position, portfolio *Portfolio) {
 }
 
 func SetRegion(currentPosition Position, portfolio *Portfolio) {
+	if currentPosition.Region == "" {
+		currentPosition.Region = GetRegionStock(currentPosition.Ticker)
+	}
 	switch currentPosition.Region {
 	case "Russia":
 		portfolio.Region.RU += currentPosition.Sum
@@ -146,6 +149,11 @@ func SetRegion(currentPosition Position, portfolio *Portfolio) {
 		portfolio.Region.China += currentPosition.Sum
 		if currentPosition.Type == "Stock" {
 			portfolio.StockRegion.China += currentPosition.Sum
+		}
+	case "Kazakhstan":
+		portfolio.Region.World += currentPosition.Sum
+		if currentPosition.Type == "Stock" {
+			portfolio.StockRegion.World += currentPosition.Sum
 		}
 	case "Developing":
 		portfolio.Region.Developing += currentPosition.Sum
