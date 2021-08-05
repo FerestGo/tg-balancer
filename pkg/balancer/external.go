@@ -14,22 +14,6 @@ type ETF struct {
 	Region   string
 }
 
-type rawStock struct {
-	QuoteSummary QuoteSummary `json:"quoteSummary"`
-}
-
-type QuoteSummary struct {
-	Result Result `json:"result"`
-}
-
-type Result struct {
-	AssetProfile AssetProfile `json:"assetProfile"`
-}
-
-type AssetProfile struct {
-	Country string `json:"country"`
-}
-
 func GetTypeETF(ticker string) (class string, currency string) {
 	jsonFile, err := os.Open("etfs.json")
 	errorHandle(err)
