@@ -22,7 +22,7 @@ type Type struct {
 	Bonds        float64
 	Stock        float64
 	UndefinedEtf float64
-	Gold         float64
+	Goods        float64
 }
 
 type Currency struct {
@@ -68,13 +68,13 @@ func (portfolio *Portfolio) SetPercent() {
 	portfolio.PercentType.Stock = (portfolio.Types.Stock / portfolio.Total) * 100
 	portfolio.PercentType.Bonds = (portfolio.Types.Bonds / portfolio.Total) * 100
 	portfolio.PercentType.UndefinedEtf = (portfolio.Types.UndefinedEtf / portfolio.Total) * 100
-	portfolio.PercentType.Gold = (portfolio.Types.Gold / portfolio.Total) * 100
+	portfolio.PercentType.Goods = (portfolio.Types.Goods / portfolio.Total) * 100
 
 	// Типы без валют
 	portfolio.PercentTypeNoCurrency.Stock = (portfolio.Types.Stock / (portfolio.Total - portfolio.Types.Currency)) * 100
 	portfolio.PercentTypeNoCurrency.Bonds = (portfolio.Types.Bonds / (portfolio.Total - portfolio.Types.Currency)) * 100
 	portfolio.PercentTypeNoCurrency.UndefinedEtf = (portfolio.Types.UndefinedEtf / (portfolio.Total - portfolio.Types.Currency)) * 100
-	portfolio.PercentTypeNoCurrency.Gold = (portfolio.Types.Gold / (portfolio.Total - portfolio.Types.Currency)) * 100
+	portfolio.PercentTypeNoCurrency.Goods = (portfolio.Types.Goods / (portfolio.Total - portfolio.Types.Currency)) * 100
 
 	// Валюты всего портфеля
 	portfolio.PercentCurrency.RUB = (portfolio.Currency.RUB / portfolio.Total) * 100
@@ -107,7 +107,7 @@ func AddAllWeatherEtf(position Position, portfolio *Portfolio) {
 		// исключение для тинькофф вечников, стоит убрать хардкод
 		portfolio.Types.Bonds += position.Sum / 2
 		portfolio.Types.Stock += position.Sum / 4
-		portfolio.Types.Gold += position.Sum / 4
+		portfolio.Types.Goods += position.Sum / 4
 		if position.Region == "Russia" {
 			portfolio.StockRegion.RU += position.Sum / 4
 		}

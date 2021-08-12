@@ -104,13 +104,18 @@
     "Currency": "RUB",
     "Region": "Russia"
   },
+  "AMRH": {
+    "Class": "Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
   "AMSC": {
     "Class": "Stock",
     "Currency": "USD",
     "Region": "USA"
   },
   "AMSL": {
-    "Class": "Gold",
+    "Class": "Goods",
     "Currency": "USD",
     "Region": "World"
   },
@@ -170,7 +175,7 @@
     "Region": "USA"
   },
   "FXGD": {
-    "Class": "Gold",
+    "Class": "Goods",
     "Currency": "USD",
     "Region": "World"
   },
@@ -254,9 +259,29 @@
     "Currency": "RUB",
     "Region": "Russia"
   },
+  "INEM": {
+    "Class": "Bond",
+    "Currency": "USD",
+    "Region": "World"
+  },
+  "INGO": {
+    "Class": "Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
+  "MKBD": {
+    "Class": "Stock",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
   "MTEK": {
     "Class": "Stock",
     "Currency": "RUB",
+    "Region": "USA"
+  },
+  "OPNS": {
+    "Class": "Stock",
+    "Currency": "USD",
     "Region": "USA"
   },
   "OPNW": {
@@ -269,9 +294,19 @@
     "Currency": "USD",
     "Region": "Russia"
   },
+  "RCHY": {
+    "Class": "Bond",
+    "Currency": "RUB",
+    "Region": "Russia"
+  },
   "RCMB": {
     "Class": "Bond",
     "Currency": "USD",
+    "Region": "Russia"
+  },
+  "RCMM": {
+    "Class": "Bond",
+    "Currency": "RUB",
     "Region": "Russia"
   },
   "RCMX": {
@@ -385,7 +420,7 @@
     "Region": "Europe"
   },
   "TGLD": {
-    "Class": "Gold",
+    "Class": "Goods",
     "Currency": "USD",
     "Region": "World"
   },
@@ -440,13 +475,18 @@
     "Region": "World"
   },
   "VTBG": {
-    "Class": "Gold",
+    "Class": "Goods",
     "Currency": "USD",
     "Region": "World"
   },
   "VTBH": {
     "Class": "Bond",
     "Currency": "USD",
+    "Region": "USA"
+  },
+  "VTBI": {
+    "Class": "Bond",
+    "Currency": "RUB",
     "Region": "USA"
   },
   "VTBM": {
