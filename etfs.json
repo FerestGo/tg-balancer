@@ -209,6 +209,11 @@
     "Currency": "RUB",
     "Region": "Russia"
   },
+  "FXRD": {
+    "Class": "Bond",
+    "Currency": "RUB",
+    "Region": "USA"
+  },
   "FXRL": {
     "Class": "Stock",
     "Currency": "USD",
