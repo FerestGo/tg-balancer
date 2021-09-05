@@ -2,516 +2,1031 @@
   "AKCH": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "China"
+    "Region": "China",
+    "Geography": {
+      "area": "Asia",
+      "country": "China",
+      "marketType": "Emerging"
+    }
   },
   "AKEU": {
     "Class": "Stock",
     "Currency": "EUR",
-    "Region": "Europe"
+    "Region": "Europe",
+    "Geography": {
+      "area": "Europe",
+      "country": "Absent",
+      "marketType": "Developed"
+    }
   },
   "AKMB": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "AKMD": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AKME": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "AKNX": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AKSP": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMCC": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMDG": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMEM": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Emerging"
+    }
   },
   "AMGF": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMGM": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Commodity"
+    }
   },
   "AMGR": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMHC": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMHY": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMIG": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMIN": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMLV": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMMF": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMRB": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "AMRE": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "AMRH": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "AMSC": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "AMSL": {
     "Class": "Goods",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Commodity"
+    }
   },
   "AMVF": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "BCSB": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "DIVD": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "ESGR": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "FMRU": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "FMUS": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXCN": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "China"
+    "Region": "China",
+    "Geography": {
+      "area": "Asia",
+      "country": "China",
+      "marketType": "Emerging"
+    }
   },
   "FXDE": {
     "Class": "Stock",
     "Currency": "EUR",
-    "Region": "Europe"
+    "Region": "Europe",
+    "Geography": {
+      "area": "Europe",
+      "country": "Europe",
+      "marketType": "Developed"
+    }
   },
   "FXDM": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Ex. USA",
+      "marketType": "Developed"
+    }
   },
   "FXES": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "All"
+    }
   },
   "FXFA": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXGD": {
     "Class": "Goods",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Commodity"
+    }
   },
   "FXIM": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXIP": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXIT": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXKZ": {
     "Class": "Stock",
     "Currency": "KZT",
-    "Region": "Kazakhstan"
+    "Region": "Kazakhstan",
+    "Geography": {
+      "area": "Asia",
+      "country": "Kazakhstan",
+      "marketType": "Borderline"
+    }
   },
   "FXMM": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXRB": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "FXRD": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXRL": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "FXRU": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "FXRW": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "All"
+    }
   },
   "FXTB": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXTP": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXUS": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "FXWO": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "All"
+    }
   },
   "GPBM": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "GPBS": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "GROD": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "INEM": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Emerging"
+    }
   },
   "INGO": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "MKBD": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "MTEK": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "OPNS": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "OPNW": {
     "Class": "Mixed",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "All"
+    }
   },
   "PRIE": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "RCHY": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "RCMB": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "RCMM": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "RCMX": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "RUSB": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "RUSE": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SBCB": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SBCS": {
     "Class": "Mixed",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SBDS": {
     "Class": "Mixed",
     "Currency": "RUB",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "All"
+    }
   },
   "SBGB": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SBMX": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SBPS": {
     "Class": "Mixed",
     "Currency": "RUB",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "All"
+    }
   },
   "SBRB": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SBRI": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SBRS": {
     "Class": "Mixed",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SBSP": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "SBWS": {
     "Class": "Mixed",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SCIP": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "SPBC": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SPBF": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "SUGB": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "TBIO": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "TBRU": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "TECH": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "TEUR": {
     "Class": "Mixed",
     "Currency": "EUR",
-    "Region": "Europe"
+    "Region": "Europe",
+    "Geography": {
+      "area": "Europe",
+      "country": "Absent",
+      "marketType": "Developed"
+    }
   },
   "TGLD": {
     "Class": "Goods",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Commodity"
+    }
   },
   "TGRN": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "All"
+    }
   },
   "TIPO": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Developed"
+    }
   },
   "TMOS": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "TRUR": {
     "Class": "Mixed",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "TSPV": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "TSPX": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "TUSD": {
     "Class": "Mixed",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "VTBA": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "VTBB": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "VTBE": {
     "Class": "Stock",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Emerging"
+    }
   },
   "VTBG": {
     "Class": "Goods",
     "Currency": "USD",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Commodity"
+    }
   },
   "VTBH": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "VTBI": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "USA"
+    "Region": "USA",
+    "Geography": {
+      "area": "America",
+      "country": "USA",
+      "marketType": "Developed"
+    }
   },
   "VTBM": {
     "Class": "Bond",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "VTBU": {
     "Class": "Bond",
     "Currency": "USD",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "VTBX": {
     "Class": "Stock",
     "Currency": "RUB",
-    "Region": "Russia"
+    "Region": "Russia",
+    "Geography": {
+      "area": "Russia",
+      "country": "Russia",
+      "marketType": "Emerging"
+    }
   },
   "VTBY": {
     "Class": "Bond",
     "Currency": "EUR",
-    "Region": "World"
+    "Region": "World",
+    "Geography": {
+      "area": "World",
+      "country": "Absent",
+      "marketType": "Emerging"
+    }
   }
 }
