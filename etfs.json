@@ -13,7 +13,7 @@
     "Currency": "EUR",
     "Geography": {
       "area": "Европа",
-      "country": "Отсутствует",
+      "country": "Мир",
       "marketType": "Развитый"
     }
   },
@@ -84,8 +84,8 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Развивающийся"
     }
   },
@@ -102,8 +102,8 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Товарный"
     }
   },
@@ -210,8 +210,8 @@
     "Class": "Goods",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Товарный"
     }
   },
@@ -291,7 +291,7 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
+      "area": "Мир",
       "country": "Кроме США",
       "marketType": "Развитый"
     }
@@ -300,8 +300,8 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Все"
     }
   },
@@ -318,8 +318,8 @@
     "Class": "Goods",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Товарный"
     }
   },
@@ -408,8 +408,8 @@
     "Class": "Stock",
     "Currency": "RUB",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Все"
     }
   },
@@ -444,8 +444,8 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Все"
     }
   },
@@ -480,8 +480,8 @@
     "Class": "Bond",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Развивающийся"
     }
   },
@@ -525,8 +525,8 @@
     "Class": "Mixed",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Все"
     }
   },
@@ -615,8 +615,8 @@
     "Class": "Mixed",
     "Currency": "RUB",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Все"
     }
   },
@@ -642,8 +642,8 @@
     "Class": "Mixed",
     "Currency": "RUB",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Все"
     }
   },
@@ -760,7 +760,7 @@
     "Currency": "EUR",
     "Geography": {
       "area": "Европа",
-      "country": "Отсутствует",
+      "country": "Мир",
       "marketType": "Развитый"
     }
   },
@@ -768,8 +768,8 @@
     "Class": "Goods",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Товарный"
     }
   },
@@ -777,8 +777,8 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Все"
     }
   },
@@ -786,8 +786,8 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Развитый"
     }
   },
@@ -858,8 +858,8 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Развивающийся"
     }
   },
@@ -867,8 +867,8 @@
     "Class": "Goods",
     "Currency": "USD",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Товарный"
     }
   },
@@ -921,8 +921,8 @@
     "Class": "Bond",
     "Currency": "EUR",
     "Geography": {
-      "area": "Весь мир",
-      "country": "Отсутствует",
+      "area": "Мир",
+      "country": "Мир",
       "marketType": "Развивающийся"
     }
   }
