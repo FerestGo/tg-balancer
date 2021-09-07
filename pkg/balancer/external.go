@@ -5,13 +5,14 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type ETF struct {
-	Class    string
-	SubClass string
-	Currency string
-	Region   string
+	Class             string
+	SubClass          string
+	Currency          string
+	GeographyPosition GeographyPosition `json:"Geography"`
 }
 
 func GetTypeETF(ticker string) (class string, currency string) {
@@ -29,7 +30,7 @@ func GetTypeETF(ticker string) (class string, currency string) {
 	return etfs[ticker].Class, etfs[ticker].Currency
 }
 
-func GetRegionETF(ticker string) string {
+func GetGeographyETF(ticker string) GeographyPosition {
 	jsonFile, err := os.Open("etfs.json")
 	errorHandle(err)
 
@@ -41,10 +42,11 @@ func GetRegionETF(ticker string) string {
 	err = json.Unmarshal(byteValue, &etfs)
 	errorHandle(err)
 
-	return etfs[ticker].Region
+	return etfs[ticker].GeographyPosition
 }
 
-func GetRegionStock(ticker string) (region string) {
+func GetCountryStock(ticker string) (country string) {
+	ticker = replaceAt(ticker)
 	url := "https://query1.finance.yahoo.com/v10/finance/quoteSummary/" + ticker + "?modules=assetProfile"
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -58,9 +60,9 @@ func GetRegionStock(ticker string) (region string) {
 
 	json.Unmarshal([]byte(body), &result)
 	if res.StatusCode == 200 {
-		region = result["quoteSummary"].(map[string]interface{})["result"].([]interface{})[0].(map[string]interface{})["assetProfile"].(map[string]interface{})["country"].(string)
-		if region == "United States" {
-			region = "USA"
+		country = result["quoteSummary"].(map[string]interface{})["result"].([]interface{})[0].(map[string]interface{})["assetProfile"].(map[string]interface{})["country"].(string)
+		if country == "United States" {
+			country = "USA"
 		}
 	} else {
 		url = "https://query1.finance.yahoo.com/v10/finance/quoteSummary/" + ticker + ".ME?modules=assetProfile"
@@ -76,8 +78,27 @@ func GetRegionStock(ticker string) (region string) {
 
 		json.Unmarshal([]byte(body), &result)
 		if res.StatusCode == 200 {
-			region = result["quoteSummary"].(map[string]interface{})["result"].([]interface{})[0].(map[string]interface{})["assetProfile"].(map[string]interface{})["country"].(string)
+			country = result["quoteSummary"].(map[string]interface{})["result"].([]interface{})[0].(map[string]interface{})["assetProfile"].(map[string]interface{})["country"].(string)
 		}
 	}
-	return region
+	return replaceCountry(country)
+}
+
+// TODO: сделать нормально
+func replaceCountry(name string) string {
+	replaces := map[string]string{}
+	replaces["USA"] = "США"
+	replaces["Russia"] = "Россия"
+	replaces["Germany"] = "Германия"
+	replaces["China"] = "Китай"
+	replaces["Kazakhstan"] = "Китай"
+
+	if replaces[name] != "" {
+		return replaces[name]
+	}
+	return name
+}
+
+func replaceAt(name string) string {
+	return strings.Replace(name, "@", ".", 1)
 }

@@ -8,10 +8,10 @@ type Portfolio struct {
 	Total                 float64
 	Currency              Currency
 	PercentCurrency       Currency
-	Region                Region
-	PercentRegion         Region
-	StockPercentRegion    Region
-	StockRegion           Region
+	Geography             Geography
+	PercentGeography      Geography
+	StockGeography        Geography
+	PercentStockGeography Geography
 	Types                 Type
 	PercentType           Type
 	PercentTypeNoCurrency Type
@@ -31,17 +31,14 @@ type Currency struct {
 	EUR float64
 }
 
-type Region struct {
-	World      float64
-	USA        float64
-	RU         float64
-	Europe     float64
-	Developing float64
-	China      float64
-	Undefined  float64
+type Geography struct {
+	Area       map[string]float64
+	Country    map[string]float64
+	MarketType map[string]float64
 }
 
 func (portfolio *Portfolio) Analysis(receivedPortfolio sdk.Portfolio) {
+
 	for _, position := range receivedPortfolio.Positions {
 		portfolio.SetParamsByName(position)
 	}
@@ -52,9 +49,20 @@ func (portfolio *Portfolio) Analysis(receivedPortfolio sdk.Portfolio) {
 func (portfolio *Portfolio) SetParamsByName(position sdk.PositionBalance) (receivedPortfolio *sdk.Portfolio) {
 	currentPosition := GetPosition(position)
 
-	SetRegion(currentPosition, portfolio)
-	AddAllWeatherEtf(currentPosition, portfolio)
+	if portfolio.StockGeography.MarketType == nil {
+		portfolio.StockGeography.MarketType = map[string]float64{}
+		portfolio.PercentStockGeography.MarketType = map[string]float64{}
+
+		portfolio.StockGeography.Country = map[string]float64{}
+		portfolio.PercentStockGeography.Country = map[string]float64{}
+
+		portfolio.StockGeography.Area = map[string]float64{}
+		portfolio.PercentStockGeography.Area = map[string]float64{}
+	}
+
 	SetType(currentPosition, portfolio)
+	SetGeography(currentPosition, portfolio)
+	AddAllWeatherEtf(currentPosition, portfolio)
 	SetCurrency(currentPosition, portfolio)
 
 	portfolio.Total += currentPosition.Sum
@@ -81,23 +89,22 @@ func (portfolio *Portfolio) SetPercent() {
 	portfolio.PercentCurrency.USD = (portfolio.Currency.USD / portfolio.Total) * 100
 	portfolio.PercentCurrency.EUR = (portfolio.Currency.EUR / portfolio.Total) * 100
 
-	// Регионы акций
-	portfolio.StockPercentRegion.RU = (portfolio.StockRegion.RU / portfolio.Types.Stock) * 100
-	portfolio.StockPercentRegion.Europe = (portfolio.StockRegion.Europe / portfolio.Types.Stock) * 100
-	portfolio.StockPercentRegion.USA = (portfolio.StockRegion.USA / portfolio.Types.Stock) * 100
-	portfolio.StockPercentRegion.China = (portfolio.StockRegion.China / portfolio.Types.Stock) * 100
-	portfolio.StockPercentRegion.Developing = (portfolio.StockRegion.Developing / portfolio.Types.Stock) * 100
-	portfolio.StockPercentRegion.World = (portfolio.StockRegion.World / portfolio.Types.Stock) * 100
-	portfolio.StockPercentRegion.Undefined = (portfolio.StockRegion.Undefined / portfolio.Types.Stock) * 100
+	// Страны
+	for key, country := range portfolio.Geography.Country {
+		portfolio.PercentGeography.Country[key] = (country / portfolio.Total) * 100
+	}
 
-	// Регионы
-	portfolio.PercentRegion.RU = (portfolio.Region.RU / portfolio.Total) * 100
-	portfolio.PercentRegion.Europe = (portfolio.Region.Europe / portfolio.Total) * 100
-	portfolio.PercentRegion.USA = (portfolio.Region.USA / portfolio.Total) * 100
-	portfolio.PercentRegion.China = (portfolio.Region.China / portfolio.Total) * 100
-	portfolio.PercentRegion.Developing = (portfolio.Region.Developing / portfolio.Total) * 100
-	portfolio.PercentRegion.World = (portfolio.Region.World / portfolio.Total) * 100
-	portfolio.PercentRegion.Undefined = (portfolio.Region.Undefined / portfolio.Total) * 100
+	for key, country := range portfolio.StockGeography.Country {
+		portfolio.PercentStockGeography.Country[key] = (country / portfolio.Types.Stock) * 100
+	}
+	// Зоны
+	for key, area := range portfolio.StockGeography.Area {
+		portfolio.PercentStockGeography.Area[key] = (area / portfolio.Types.Stock) * 100
+	}
+	// Рынок
+	for key, market := range portfolio.StockGeography.MarketType {
+		portfolio.PercentStockGeography.MarketType[key] = (market / portfolio.Types.Stock) * 100
+	}
 
 	return
 }
@@ -108,65 +115,39 @@ func AddAllWeatherEtf(position Position, portfolio *Portfolio) {
 		portfolio.Types.Bonds += position.Sum / 2
 		portfolio.Types.Stock += position.Sum / 4
 		portfolio.Types.Goods += position.Sum / 4
-		if position.Region == "Russia" {
-			portfolio.StockRegion.RU += position.Sum / 4
+		if position.GeographyPosition.Country == "Russia" {
+			portfolio.StockGeography.Area["Russia"] += position.Sum / 4
+			portfolio.StockGeography.Area["Russia"] += position.Sum / 4
+			portfolio.StockGeography.Country["Russia"] += position.Sum / 4
+			portfolio.StockGeography.MarketType["Emerging"] += position.Sum / 4
 		}
-		if position.Region == "USA" {
-			portfolio.StockRegion.USA += position.Sum / 4
+		if position.GeographyPosition.Country == "USA" {
+			portfolio.StockGeography.Area["America"] += position.Sum / 4
+			portfolio.StockGeography.Country["USA"] += position.Sum / 4
+			portfolio.StockGeography.MarketType["Developed"] += position.Sum / 4
 		}
-		if position.Region == "Europe" {
-			portfolio.StockRegion.Europe += position.Sum / 4
+		if position.GeographyPosition.Country == "Europe" {
+			portfolio.StockGeography.Area["Europe"] += position.Sum / 4
+			portfolio.StockGeography.Country["Absent"] += position.Sum / 4
+			portfolio.StockGeography.MarketType["Developed"] += position.Sum / 4
 		}
 	}
 }
 
-func SetRegion(currentPosition Position, portfolio *Portfolio) {
-	if currentPosition.Region == "" {
-		currentPosition.Region = GetRegionStock(currentPosition.Ticker)
+func SetGeography(currentPosition Position, portfolio *Portfolio) {
+	if currentPosition.GeographyPosition.Country == "" {
+		currentPosition.GeographyPosition.Country = GetCountryStock(currentPosition.Ticker)
 	}
-	switch currentPosition.Region {
-	case "Russia":
-		portfolio.Region.RU += currentPosition.Sum
-		if currentPosition.Type == "Stock" {
-			portfolio.StockRegion.RU += currentPosition.Sum
-		}
-	case "Europe":
-		portfolio.Region.Europe += currentPosition.Sum
-		if currentPosition.Type == "Stock" {
-			portfolio.StockRegion.Europe += currentPosition.Sum
-		}
-	case "USA":
-		portfolio.Region.USA += currentPosition.Sum
-		if currentPosition.Type == "Stock" {
-			portfolio.StockRegion.USA += currentPosition.Sum
-		}
-	case "World":
-		portfolio.Region.World += currentPosition.Sum
-		if currentPosition.Type == "Stock" {
-			portfolio.StockRegion.World += currentPosition.Sum
-		}
-	case "China":
-		portfolio.Region.China += currentPosition.Sum
-		if currentPosition.Type == "Stock" {
-			portfolio.StockRegion.China += currentPosition.Sum
-		}
-	case "Kazakhstan":
-		portfolio.Region.World += currentPosition.Sum
-		if currentPosition.Type == "Stock" {
-			portfolio.StockRegion.World += currentPosition.Sum
-		}
-	case "Developing":
-		portfolio.Region.Developing += currentPosition.Sum
-		if currentPosition.Type == "Stock" {
-			portfolio.StockRegion.Developing += currentPosition.Sum
-		}
-	default:
-		portfolio.Region.Undefined += currentPosition.Sum
-		if currentPosition.Type == "Stock" {
-			portfolio.StockRegion.Undefined += currentPosition.Sum
-		}
+	if currentPosition.GeographyPosition.MarketType == "" {
+		currentPosition.GeographyPosition.MarketType = "Unknown"
+		currentPosition.GeographyPosition.Area = "Unknown"
 	}
 
+	if currentPosition.Type == "Stock" {
+		portfolio.StockGeography.MarketType[currentPosition.GeographyPosition.MarketType] += currentPosition.Sum
+		portfolio.StockGeography.Area[currentPosition.GeographyPosition.Area] += currentPosition.Sum
+		portfolio.StockGeography.Country[currentPosition.GeographyPosition.Country] += currentPosition.Sum
+	}
 }
 
 func SetType(currentPosition Position, portfolio *Portfolio) {

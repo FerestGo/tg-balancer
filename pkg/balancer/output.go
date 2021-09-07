@@ -31,28 +31,23 @@ func output(portfolio *Portfolio) string {
 		output += printer.Sprintf("Неизвестные ETF %.0f%% (%.0f р.) \n\n", portfolio.PercentTypeNoCurrency.UndefinedEtf, portfolio.Types.UndefinedEtf)
 
 	}
-	output += printer.Sprintf("Биржевые товары %.0f%% (%.0f р.) \n\n", portfolio.PercentTypeNoCurrency.Goods, portfolio.Types.Goods)
+	output += printer.Sprintf("Биржевые товары %.0f%% (%.0f р.) \n", portfolio.PercentTypeNoCurrency.Goods, portfolio.Types.Goods)
 
-	output += printer.Sprintf("Акции по регионам: \n")
-	output += printer.Sprintf("США %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.USA, portfolio.StockRegion.USA)
-	output += printer.Sprintf("Россия %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.RU, portfolio.StockRegion.RU)
-	output += printer.Sprintf("Европа %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.Europe, portfolio.StockRegion.Europe)
-	output += printer.Sprintf("Китай %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.China, portfolio.StockRegion.China)
-	output += printer.Sprintf("Мир %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.World, portfolio.StockRegion.World)
-	//output += printer.Sprintf("Развивающиеся %.0f%% (%.0f р.) \n", portfolio.StockPercentRegion.Developing)
-	if portfolio.StockPercentRegion.Undefined > 0 {
-		output += printer.Sprintf("Неопределенные %.0f%% (%.0f р.)", portfolio.StockPercentRegion.Undefined, portfolio.StockRegion.Undefined)
+	output += printer.Sprintf("\nГеография акций (experimentally): \n")
+	output += printer.Sprintf("\nСтраны: \n")
+	for key, _ := range portfolio.StockGeography.Country {
+		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", key, portfolio.PercentStockGeography.Country[key], portfolio.StockGeography.Country[key])
 	}
 
-	output += printer.Sprintf("\nВесь портфель по регионам: \n")
-	output += printer.Sprintf("США %.0f%% (%.0f р.) \n", portfolio.PercentRegion.USA, portfolio.Region.USA)
-	output += printer.Sprintf("Россия %.0f%% (%.0f р.) \n", portfolio.PercentRegion.RU, portfolio.Region.RU)
-	output += printer.Sprintf("Европа %.0f%% (%.0f р.) \n", portfolio.PercentRegion.Europe, portfolio.Region.Europe)
-	output += printer.Sprintf("Китай %.0f%% (%.0f р.) \n", portfolio.PercentRegion.China, portfolio.Region.China)
-	output += printer.Sprintf("Мир %.0f%% (%.0f р.) \n", portfolio.PercentRegion.World, portfolio.Region.World)
-	//output += printer.Sprintf("Развивающиеся %.0f%% (%.0f р.) \n", portfolio.PercentRegion.Developing)
-	if portfolio.PercentRegion.Undefined > 0 {
-		output += printer.Sprintf("Неопределенные %.0f%% (%.0f р.)", portfolio.PercentRegion.Undefined, portfolio.PercentRegion.Undefined)
+	output += printer.Sprintf("\nЗоны: \n")
+	for key, _ := range portfolio.StockGeography.Area {
+		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", key, portfolio.PercentStockGeography.Area[key], portfolio.StockGeography.Area[key])
 	}
+
+	output += printer.Sprintf("\nРынки: \n")
+	for key, _ := range portfolio.StockGeography.MarketType {
+		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", key, portfolio.PercentStockGeography.MarketType[key], portfolio.StockGeography.MarketType[key])
+	}
+
 	return output
 }
