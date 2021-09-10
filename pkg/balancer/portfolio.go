@@ -117,7 +117,6 @@ func AddAllWeatherEtf(position Position, portfolio *Portfolio) {
 		portfolio.Types.Goods += position.Sum / 4
 		if position.GeographyPosition.Country == "Russia" {
 			portfolio.StockGeography.Area["Russia"] += position.Sum / 4
-			portfolio.StockGeography.Area["Russia"] += position.Sum / 4
 			portfolio.StockGeography.Country["Russia"] += position.Sum / 4
 			portfolio.StockGeography.MarketType["Emerging"] += position.Sum / 4
 		}
