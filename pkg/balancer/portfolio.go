@@ -135,7 +135,7 @@ func AddAllWeatherEtf(position Position, portfolio *Portfolio) {
 
 func SetGeography(currentPosition Position, portfolio *Portfolio) {
 	if currentPosition.GeographyPosition.Country == "" {
-		currentPosition.GeographyPosition.Country = GetCountryStock(currentPosition.Ticker)
+		currentPosition.GeographyPosition = GetStockInfo(currentPosition.Ticker)
 	}
 	if currentPosition.GeographyPosition.MarketType == "" {
 		currentPosition.GeographyPosition.MarketType = "Unknown"
