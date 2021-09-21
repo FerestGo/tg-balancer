@@ -292,7 +292,7 @@
     "Currency": "USD",
     "Geography": {
       "area": "Мир",
-      "country": "Кроме США",
+      "country": "Фонд без США",
       "marketType": "Развитый"
     }
   },

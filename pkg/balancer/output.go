@@ -24,20 +24,22 @@ func output(portfolio *Portfolio) string {
 	output += printer.Sprintf("USD %.0f%% (%.0f р.) \n", portfolio.PercentCurrency.USD, portfolio.Currency.USD)
 	output += printer.Sprintf("EUR %.0f%% (%.0f р.) \n\n", portfolio.PercentCurrency.EUR, portfolio.Currency.EUR)
 
-	output += printer.Sprintf("Акции (бета):")
-	output += printer.Sprintf("\nСтраны: \n")
-	for key, _ := range portfolio.StockGeography.Country {
-		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", key, portfolio.PercentStockGeography.Country[key], portfolio.StockGeography.Country[key])
+	kv := mapToSortedSlice(portfolio.StockGeography.Country)
+	output += printer.Sprintf("Страны: \n")
+	for i := 0; i < len(kv); i++ {
+		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", kv[i].Key, portfolio.PercentStockGeography.Country[kv[i].Key], kv[i].Value)
 	}
 
+	kv = mapToSortedSlice(portfolio.StockGeography.Area)
 	output += printer.Sprintf("\nЗоны: \n")
-	for key, _ := range portfolio.StockGeography.Area {
-		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", key, portfolio.PercentStockGeography.Area[key], portfolio.StockGeography.Area[key])
+	for i := 0; i < len(kv); i++ {
+		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", kv[i].Key, portfolio.PercentStockGeography.Area[kv[i].Key], kv[i].Value)
 	}
 
+	kv = mapToSortedSlice(portfolio.StockGeography.MarketType)
 	output += printer.Sprintf("\nРынки: \n")
-	for key, _ := range portfolio.StockGeography.MarketType {
-		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", key, portfolio.PercentStockGeography.MarketType[key], portfolio.StockGeography.MarketType[key])
+	for i := 0; i < len(kv); i++ {
+		output += printer.Sprintf("%s %.0f%% (%.0f р.) \n", kv[i].Key, portfolio.PercentStockGeography.MarketType[kv[i].Key], kv[i].Value)
 	}
 
 	return output

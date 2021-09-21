@@ -40,13 +40,13 @@ type Geography struct {
 func (portfolio *Portfolio) Analysis(receivedPortfolio sdk.Portfolio) {
 
 	for _, position := range receivedPortfolio.Positions {
-		portfolio.SetParamsByName(position)
+		portfolio.AddPosition(position)
 	}
 
 	return
 }
 
-func (portfolio *Portfolio) SetParamsByName(position sdk.PositionBalance) (receivedPortfolio *sdk.Portfolio) {
+func (portfolio *Portfolio) AddPosition(position sdk.PositionBalance) (receivedPortfolio *sdk.Portfolio) {
 	currentPosition := GetPosition(position)
 
 	if portfolio.StockGeography.MarketType == nil {
@@ -78,25 +78,16 @@ func (portfolio *Portfolio) SetPercent() {
 	portfolio.PercentType.UndefinedEtf = (portfolio.Types.UndefinedEtf / portfolio.Total) * 100
 	portfolio.PercentType.Goods = (portfolio.Types.Goods / portfolio.Total) * 100
 
-	// Типы без валют
-	portfolio.PercentTypeNoCurrency.Stock = (portfolio.Types.Stock / (portfolio.Total - portfolio.Types.Currency)) * 100
-	portfolio.PercentTypeNoCurrency.Bonds = (portfolio.Types.Bonds / (portfolio.Total - portfolio.Types.Currency)) * 100
-	portfolio.PercentTypeNoCurrency.UndefinedEtf = (portfolio.Types.UndefinedEtf / (portfolio.Total - portfolio.Types.Currency)) * 100
-	portfolio.PercentTypeNoCurrency.Goods = (portfolio.Types.Goods / (portfolio.Total - portfolio.Types.Currency)) * 100
-
 	// Валюты всего портфеля
 	portfolio.PercentCurrency.RUB = (portfolio.Currency.RUB / portfolio.Total) * 100
 	portfolio.PercentCurrency.USD = (portfolio.Currency.USD / portfolio.Total) * 100
 	portfolio.PercentCurrency.EUR = (portfolio.Currency.EUR / portfolio.Total) * 100
 
 	// Страны
-	for key, country := range portfolio.Geography.Country {
-		portfolio.PercentGeography.Country[key] = (country / portfolio.Total) * 100
-	}
-
 	for key, country := range portfolio.StockGeography.Country {
 		portfolio.PercentStockGeography.Country[key] = (country / portfolio.Types.Stock) * 100
 	}
+
 	// Зоны
 	for key, area := range portfolio.StockGeography.Area {
 		portfolio.PercentStockGeography.Area[key] = (area / portfolio.Types.Stock) * 100
@@ -109,9 +100,48 @@ func (portfolio *Portfolio) SetPercent() {
 	return
 }
 
+func SetGeography(currentPosition Position, portfolio *Portfolio) {
+	if currentPosition.Type == "Stock" {
+		if currentPosition.GeographyPosition.Country == "" {
+			currentPosition.GeographyPosition = GetStockInfo(currentPosition.Ticker)
+		} else {
+			portfolio.StockGeography.MarketType[currentPosition.GeographyPosition.MarketType] += currentPosition.Sum
+			portfolio.StockGeography.Area[currentPosition.GeographyPosition.Area] += currentPosition.Sum
+			portfolio.StockGeography.Country[currentPosition.GeographyPosition.Country] += currentPosition.Sum
+		}
+	}
+}
+
+func SetType(currentPosition Position, portfolio *Portfolio) {
+
+	switch currentPosition.Type {
+	case "Currency":
+		portfolio.Types.Currency += currentPosition.Sum
+	case "Bond":
+		portfolio.Types.Bonds += currentPosition.Sum
+	case "Stock":
+		portfolio.Types.Stock += currentPosition.Sum
+	case "Balanced":
+		break
+	default:
+		portfolio.Types.UndefinedEtf += currentPosition.Sum
+	}
+}
+
+func SetCurrency(currentPosition Position, portfolio *Portfolio) {
+	switch currentPosition.Currency {
+	case "RUB":
+		portfolio.Currency.RUB += currentPosition.Sum
+	case "USD":
+		portfolio.Currency.USD += currentPosition.Sum
+	case "EUR":
+		portfolio.Currency.EUR += currentPosition.Sum
+	}
+}
+
+// исключение для тинькофф вечников
 func AddAllWeatherEtf(position Position, portfolio *Portfolio) {
 	if position.Type == "Balanced" {
-		// исключение для тинькофф вечников, стоит убрать хардкод
 		portfolio.Types.Bonds += position.Sum / 2
 		portfolio.Types.Stock += position.Sum / 4
 		portfolio.Types.Goods += position.Sum / 4
@@ -130,48 +160,5 @@ func AddAllWeatherEtf(position Position, portfolio *Portfolio) {
 			portfolio.StockGeography.Country["Absent"] += position.Sum / 4
 			portfolio.StockGeography.MarketType["Developed"] += position.Sum / 4
 		}
-	}
-}
-
-func SetGeography(currentPosition Position, portfolio *Portfolio) {
-	if currentPosition.GeographyPosition.Country == "" {
-		currentPosition.GeographyPosition = GetStockInfo(currentPosition.Ticker)
-	}
-	if currentPosition.GeographyPosition.MarketType == "" {
-		currentPosition.GeographyPosition.MarketType = "Unknown"
-		currentPosition.GeographyPosition.Area = "Unknown"
-	}
-
-	if currentPosition.Type == "Stock" {
-		portfolio.StockGeography.MarketType[currentPosition.GeographyPosition.MarketType] += currentPosition.Sum
-		portfolio.StockGeography.Area[currentPosition.GeographyPosition.Area] += currentPosition.Sum
-		portfolio.StockGeography.Country[currentPosition.GeographyPosition.Country] += currentPosition.Sum
-	}
-}
-
-func SetType(currentPosition Position, portfolio *Portfolio) {
-	if currentPosition.Type == "Currency" {
-		portfolio.Types.Currency += currentPosition.Sum
-	}
-	if currentPosition.Type == "Bond" {
-		portfolio.Types.Bonds += currentPosition.Sum
-	}
-	if currentPosition.Type == "Stock" {
-		portfolio.Types.Stock += currentPosition.Sum
-	}
-	if currentPosition.Type == "" {
-		portfolio.Types.UndefinedEtf += currentPosition.Sum
-	}
-}
-
-func SetCurrency(currentPosition Position, portfolio *Portfolio) {
-	if currentPosition.Currency == "RUB" {
-		portfolio.Currency.RUB += currentPosition.Sum
-	}
-	if currentPosition.Currency == "USD" {
-		portfolio.Currency.USD += currentPosition.Sum
-	}
-	if currentPosition.Currency == "EUR" {
-		portfolio.Currency.EUR += currentPosition.Sum
 	}
 }

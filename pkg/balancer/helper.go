@@ -1,8 +1,10 @@
 package balancer
 
 import (
-	sdk "github.com/TinkoffCreditSystems/invest-openapi-go-sdk"
 	"log"
+	"sort"
+
+	sdk "github.com/TinkoffCreditSystems/invest-openapi-go-sdk"
 )
 
 func errorHandle(err error) {
@@ -18,4 +20,25 @@ func errorHandle(err error) {
 	}
 
 	log.Fatalln(err)
+}
+
+type kv struct {
+	Key   string
+	Value float64
+}
+
+type myMap map[string]float64
+
+func mapToSortedSlice(m myMap) []kv {
+	var ss []kv
+
+	for k, v := range m {
+		ss = append(ss, kv{k, v})
+	}
+
+	sort.Slice(ss, func(i, j int) bool {
+		return ss[i].Value > ss[j].Value
+	})
+
+	return ss
 }
