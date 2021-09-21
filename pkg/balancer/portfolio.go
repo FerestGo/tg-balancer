@@ -104,11 +104,10 @@ func SetGeography(currentPosition Position, portfolio *Portfolio) {
 	if currentPosition.Type == "Stock" {
 		if currentPosition.GeographyPosition.Country == "" {
 			currentPosition.GeographyPosition = GetStockInfo(currentPosition.Ticker)
-		} else {
-			portfolio.StockGeography.MarketType[currentPosition.GeographyPosition.MarketType] += currentPosition.Sum
-			portfolio.StockGeography.Area[currentPosition.GeographyPosition.Area] += currentPosition.Sum
-			portfolio.StockGeography.Country[currentPosition.GeographyPosition.Country] += currentPosition.Sum
 		}
+		portfolio.StockGeography.MarketType[currentPosition.GeographyPosition.MarketType] += currentPosition.Sum
+		portfolio.StockGeography.Area[currentPosition.GeographyPosition.Area] += currentPosition.Sum
+		portfolio.StockGeography.Country[currentPosition.GeographyPosition.Country] += currentPosition.Sum
 	}
 }
 
@@ -145,20 +144,20 @@ func AddAllWeatherEtf(position Position, portfolio *Portfolio) {
 		portfolio.Types.Bonds += position.Sum / 2
 		portfolio.Types.Stock += position.Sum / 4
 		portfolio.Types.Goods += position.Sum / 4
-		if position.GeographyPosition.Country == "Russia" {
-			portfolio.StockGeography.Area["Russia"] += position.Sum / 4
-			portfolio.StockGeography.Country["Russia"] += position.Sum / 4
-			portfolio.StockGeography.MarketType["Emerging"] += position.Sum / 4
+		if position.GeographyPosition.Country == "Россия" {
+			portfolio.StockGeography.Area["Россия"] += position.Sum / 4
+			portfolio.StockGeography.Country["Россия"] += position.Sum / 4
+			portfolio.StockGeography.MarketType["Развивающийся"] += position.Sum / 4
 		}
-		if position.GeographyPosition.Country == "USA" {
-			portfolio.StockGeography.Area["America"] += position.Sum / 4
-			portfolio.StockGeography.Country["USA"] += position.Sum / 4
-			portfolio.StockGeography.MarketType["Developed"] += position.Sum / 4
+		if position.GeographyPosition.Country == "США" {
+			portfolio.StockGeography.Area["Америка"] += position.Sum / 4
+			portfolio.StockGeography.Country["США"] += position.Sum / 4
+			portfolio.StockGeography.MarketType["Развитый"] += position.Sum / 4
 		}
-		if position.GeographyPosition.Country == "Europe" {
-			portfolio.StockGeography.Area["Europe"] += position.Sum / 4
-			portfolio.StockGeography.Country["Absent"] += position.Sum / 4
-			portfolio.StockGeography.MarketType["Developed"] += position.Sum / 4
+		if position.GeographyPosition.Country == "Европа" {
+			portfolio.StockGeography.Area["Европа"] += position.Sum / 4
+			portfolio.StockGeography.Country["Мир"] += position.Sum / 4
+			portfolio.StockGeography.MarketType["Развитый"] += position.Sum / 4
 		}
 	}
 }
