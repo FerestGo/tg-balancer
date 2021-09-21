@@ -2,8 +2,6 @@ package balancer
 
 import (
 	"context"
-	"regexp"
-	"strings"
 	"time"
 
 	sdk "github.com/TinkoffCreditSystems/invest-openapi-go-sdk"
@@ -19,10 +17,7 @@ func InitAnalysis(message string, telegramId int) string {
 	return output
 }
 
-func initAnalysis(ctx context.Context, message string) string {
-	namePattern := regexp.MustCompile(`\s(.*)`)
-	token := strings.TrimSpace(namePattern.FindString(message))
-
+func initAnalysis(ctx context.Context, token string) string {
 	client = *sdk.NewRestClient(token)
 
 	accounts, err := client.Accounts(ctx)
