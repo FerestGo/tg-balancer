@@ -20,10 +20,10 @@ jobs:
         envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,CONTAINER_NAME
         script: |
               # Stop running container
-              docker stop $(echo $CONTAINER_NAME)
+              docker stop tg-balancer
 
               # Remove old container
-              docker rm $(echo $CONTAINER_NAME)
+              docker rm tg-balancer
 
               # Set env variables
               export TOKEN=${{ secrets.TELEGRAM_TOKEN }}
@@ -32,5 +32,5 @@ jobs:
               docker run -e TOKEN \
               --restart always \
               --publish 80:80 \
-              --name $(echo $CONTAINER_NAME) \
-              $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
+              --name tg-balancer \
+              $(echo $REGISTRY)/tg-balancer-bot:$(echo $GITHUB_SHA | head -c7)
