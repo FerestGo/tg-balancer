@@ -512,8 +512,53 @@
       "marketType": "Развитый"
     }
   },
+  "OPNA": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Азия",
+      "country": "Мир",
+      "marketType": "Развивающийся"
+    }
+  },
+  "OPNB": {
+    "Class": "Bond",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Россия",
+      "country": "Россия",
+      "marketType": "Развивающийся"
+    }
+  },
+  "OPNE": {
+    "Class": "Stock",
+    "Currency": "EUR",
+    "Geography": {
+      "area": "Европа",
+      "country": "Мир",
+      "marketType": "Развитый"
+    }
+  },
+  "OPNR": {
+    "Class": "Stock",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Россия",
+      "country": "Россия",
+      "marketType": "Разв��вающийся"
+    }
+  },
   "OPNS": {
     "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
+  "OPNU": {
+    "Class": "Bond",
     "Currency": "USD",
     "Geography": {
       "area": "Америка",
@@ -786,8 +831,8 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Мир",
-      "country": "Мир",
+      "area": "Америка",
+      "country": "США",
       "marketType": "Развитый"
     }
   },
