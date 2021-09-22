@@ -24,7 +24,7 @@ func main() {
 	if err != nil {
 		fmt.Printf("Telegram bot error: %s", err.Error())
 	}
-	fmt.Printf("Bot started %s | Duration: %s \n", bot.Self.UserName, duration)
+	fmt.Printf("Bot started %s %s \n", bot.Self.UserName, duration)
 
 	_, err = bot.RemoveWebhook()
 	u := tgbotapi.NewUpdate(0)
