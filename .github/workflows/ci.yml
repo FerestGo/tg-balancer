@@ -17,6 +17,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
+        envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,CONTAINER_NAME
         script: |
               # Stop running container
               docker stop $(echo $CONTAINER_NAME)
