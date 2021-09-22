@@ -1,7 +1,12 @@
 name: remote ssh command
 on: [push]
-jobs:
 
+env:
+  REGISTRY: "registry.digitalocean.com/sandbox-registry"
+  IMAGE_NAME: "pocket-bot"
+  CONTAINER_NAME: "pocket"
+
+jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -12,5 +17,19 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        # port: ${{ secrets.PORT }}
-        script: whoami
+        script: |
+              # Stop running container
+              docker stop $(echo $CONTAINER_NAME)
+
+              # Remove old container
+              docker rm $(echo $CONTAINER_NAME)
+
+              # Set env variables
+              export TOKEN=${{ secrets.TELEGRAM_TOKEN }}
+
+              # Run a new container from a new image
+              docker run -e TOKEN \
+              --restart always \
+              --publish 80:80 \
+              --name $(echo $CONTAINER_NAME) \
+              $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
