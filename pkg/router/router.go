@@ -43,7 +43,7 @@ func (r *Router) Handle(message string, telegramId int) (response string) {
 
 func (r *Router) Get() {
 	r.Add("/start", start, false)
-	r.Add(`^t\.`, balancer.InitAnalysis, true)
+	r.Add(`^t\..*\S$`, balancer.InitAnalysis, true)
 }
 
 func start(command string, telegramId int) (response string) {

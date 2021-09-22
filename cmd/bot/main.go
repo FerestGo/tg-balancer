@@ -35,7 +35,7 @@ func main() {
 		if update.Message == nil {
 			continue
 		}
-		if r.CheckRegexp(`^t\.`, update.Message.Text) == false {
+		if r.CheckRegexp(`^t\..*\S$`, update.Message.Text) == false {
 			fmt.Printf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, update.Message.Text)
 		} else {
 			fmt.Printf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, "Secret token")
