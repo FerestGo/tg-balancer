@@ -9,7 +9,7 @@ WORKDIR /github.com/ferestgo/tg-balancer/
 
 RUN go mod download
 RUN GOOS=linux go build -o ./.bin/bot ./cmd/bot/main.go
-RUN git config --global url."https://golang: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@github.com".insteadOf "https://github.com"
+# RUN git config --global url."https://golang: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@github.com".insteadOf "https://github.com"
 
 
 FROM alpine:latest
