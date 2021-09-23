@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  REGISTRY: "registry.digitalocean.com/sandbox-registry"
+  REGISTRY: "87.249.54.23/registry"
   IMAGE_NAME: "pocket-bot"
   CONTAINER_NAME: "pocket"
 
@@ -21,13 +21,13 @@ jobs:
       - name: Build container image
         run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) .
 
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      # - name: Install doctl
+      #   uses: digitalocean/action-doctl@v2
+      #   with:
+      #     token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
-      - name: Log in to DigitalOcean Container Registry with short-lived credentials
-        run: doctl registry login --expiry-seconds 600
+      # - name: Log in to DigitalOcean Container Registry with short-lived credentials
+      #   run: doctl registry login --expiry-seconds 600
 
       - name: Push image to DigitalOcean Container Registry
         run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
@@ -42,7 +42,7 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSHKEY }}
+          password: ${{ secrets.PASSWORD }}
           envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,,CONTAINER_NAME
           script: |
             # Login into Digital Ocean Registry
@@ -56,8 +56,8 @@ jobs:
 
             # Set env variables
             export TOKEN=${{ secrets.TELEGRAM_TOKEN }}
-            export CONSUMER_KEY=${{ secrets.POCKET_CONSUMER_KEY }}
-            export AUTH_SERVER_URL=${{ secrets.AUTH_SERVER_URL }}
+            # export CONSUMER_KEY=${{ secrets.POCKET_CONSUMER_KEY }}
+            # export AUTH_SERVER_URL=${{ secrets.AUTH_SERVER_URL }}
 
             # Run a new container from a new image
             docker run -e TOKEN -e CONSUMER_KEY -e AUTH_SERVER_URL -d \
