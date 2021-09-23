@@ -3,7 +3,7 @@ package router
 import (
 	"regexp"
 
-	"github.com/FerestGo/tg-balancer/pkg/balancer"
+	"/pkg/balancer"
 )
 
 type Router struct {
