@@ -47,6 +47,7 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 	if accountId != 0 && accounts[accountId-1].ID != "" {
 		portfolio, err = client.Portfolio(ctx, accounts[accountId-1].ID)
 		userPortfolio.Analysis(portfolio)
+		mg = "Счёт №" + strconv.Itoa(accountId) + "\n"
 	} else if accountId == 0 {
 		for _, account := range accounts {
 			portfolio, err = client.Portfolio(ctx, account.ID)
@@ -54,7 +55,7 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 				fmt.Errorf("Portfolio error: %s", err.Error())
 				portfolio, err = client.Portfolio(ctx, account.ID)
 				if err != nil {
-					mg = "\nСейчас брокер не дает полную информацию о портфеле. Такое бывает, попробуйте позже"
+					mg = "Сейчас брокер не дает полную информацию о портфеле. Такое бывает, попробуйте позже \n"
 				}
 			}
 			userPortfolio.Analysis(portfolio)
@@ -64,5 +65,5 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 	}
 	userPortfolio.SetPercent()
 
-	return output(&userPortfolio) + mg
+	return mg + output(&userPortfolio)
 }
