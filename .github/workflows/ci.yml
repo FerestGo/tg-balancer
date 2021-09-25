@@ -18,5 +18,4 @@ jobs:
 
               cd tg-balancer
               git pull
-              go get -d ./...
-              docker-compose up -d
+              docker-compose up --build
