@@ -8,6 +8,7 @@ COPY . /github.com/ferestgo/tg-balancer/
 WORKDIR /github.com/ferestgo/tg-balancer/
 
 RUN go mod download
+export token=${token}
 RUN GOOS=linux go build -o ./.bin/bot ./cmd/bot/main.go
 # RUN git config --global url."https://golang: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@github.com".insteadOf "https://github.com"
 
