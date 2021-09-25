@@ -1,25 +1,11 @@
 name: remote ssh command
 on: [push]
 
-env:
-  REGISTRY: "87.249.54.23/registry"
-  IMAGE_NAME: "pocket-bot"
-  CONTAINER_NAME: "pocket"
-
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout master
-      uses: actions/checkout@v2
-
-    - name: Build container image
-      run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) .
-
-    - name: Push image to DigitalOcean Container Registry
-      run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
-      
+    steps:      
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
@@ -28,18 +14,11 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,CONTAINER_NAME
         script: |
-              # Stop running container
-              docker stop tg-balancer
-
-              # Remove old container
-              docker rm tg-balancer
-
               # Set env variables
-              export TOKEN=${{ secrets.TELEGRAM_TOKEN }}
+              export token=${{ secrets.TELEGRAM_TOKEN }}
 
-              # Run a new container from a new image
-              docker run -e TOKEN \
-              --restart always \
-              --publish 80:80 \
-              --name tg-balancer \
-              $(echo $REGISTRY)/tg-balancer-bot:$(echo $GITHUB_SHA | head -c7)
+              cd /tg-balancer
+              git pull
+              go get -d ./...
+              make build
+              make run
