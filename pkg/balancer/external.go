@@ -2,9 +2,9 @@ package balancer
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
-	"os"
 	"regexp"
 	"strings"
 )
@@ -17,30 +17,38 @@ type ETF struct {
 }
 
 func GetTypeETF(ticker string) (class string, currency string) {
-	jsonFile, err := os.Open("etfs.json")
-	errorHandle(err)
+	url := "https://gist.githubusercontent.com/FerestGo/67e28d85ad70ca0f531f02b64c438c80/raw/7618acd1a307c1abdd04f82c0e14cee895a3c157/etfs.json"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	res, _ := http.DefaultClient.Do(req)
+	jsonFile := res.Body
 
 	defer jsonFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	etfs := map[string]ETF{}
-	err = json.Unmarshal(byteValue, &etfs)
+	err := json.Unmarshal(byteValue, &etfs)
 	errorHandle(err)
 
 	return etfs[ticker].Class, etfs[ticker].Currency
 }
 
 func GetGeographyETF(ticker string) GeographyPosition {
-	jsonFile, err := os.Open("etfs.json")
-	errorHandle(err)
+	url := "https://gist.githubusercontent.com/FerestGo/67e28d85ad70ca0f531f02b64c438c80/raw/7618acd1a307c1abdd04f82c0e14cee895a3c157/etfs.json"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	res, _ := http.DefaultClient.Do(req)
+	jsonFile := res.Body
 
 	defer jsonFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	etfs := map[string]ETF{}
-	err = json.Unmarshal(byteValue, &etfs)
+	err := json.Unmarshal(byteValue, &etfs)
 	errorHandle(err)
 
 	return etfs[ticker].GeographyPosition
@@ -111,12 +119,19 @@ func replaceAt(name string) string {
 }
 
 func getMarketCountry(name string) string {
-	developedFile, err := os.Open("developed.txt")
-	errorHandle(err)
+	url := "https://gist.githubusercontent.com/FerestGo/97993663b544397735458d85b14049a3/raw/37ac956bd14c146395864cc3b63542ba9cdd0c86/developed.txt"
 
-	defer developedFile.Close()
+	req, _ := http.NewRequest("GET", url, nil)
 
-	byteValue, _ := ioutil.ReadAll(developedFile)
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Errorf("Cant get market country %s:", err.Error())
+	}
+	jsonFile := res.Body
+
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	regexp := regexp.MustCompile(name)
 	developed := regexp.FindString(string(byteValue))
@@ -128,11 +143,15 @@ func getMarketCountry(name string) string {
 }
 
 func GetArea(name string) string {
-	jsonFile, err := os.Open("zones.json")
-	errorHandle(err)
+	url := "https://gist.githubusercontent.com/FerestGo/c90b19f17bd6f41ce92a4b9c16b14f21/raw/1926a54f24f406f2441e99eb6fc7055a2e936650/zones.json"
 
-	defer jsonFile.Close()
+	req, _ := http.NewRequest("GET", url, nil)
 
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Errorf("Cant get area country %s:", err.Error())
+	}
+	jsonFile := res.Body
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	var areas map[string]interface{}

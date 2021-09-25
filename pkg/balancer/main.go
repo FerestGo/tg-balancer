@@ -34,6 +34,7 @@ func getAccount(message string) (token string, account int) {
 }
 
 func initAnalysis(ctx context.Context, token string, accountId int) string {
+	mg := ""
 	client = *sdk.NewRestClient(token)
 
 	accounts, err := client.Accounts(ctx)
@@ -50,8 +51,11 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 		for _, account := range accounts {
 			portfolio, err = client.Portfolio(ctx, account.ID)
 			if err != nil {
-				fmt.Errorf("Portfolio error: %s", err)
-				return "Не удается получить портфель, попробуйте позже"
+				fmt.Errorf("Portfolio error: %s", err.Error())
+				portfolio, err = client.Portfolio(ctx, account.ID)
+				if err != nil {
+					mg = "\nСейчас брокер не дает полную информацию о портфеле. Такое бывает, попробуйте позже"
+				}
 			}
 			userPortfolio.Analysis(portfolio)
 		}
@@ -60,5 +64,5 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 	}
 	userPortfolio.SetPercent()
 
-	return output(&userPortfolio)
+	return output(&userPortfolio) + mg
 }
