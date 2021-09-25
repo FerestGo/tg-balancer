@@ -1,4 +1,4 @@
-name: remote ssh command
+name: remote ssh start
 on: [push]
 
 jobs:
@@ -6,7 +6,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:      
-    - name: executing remote ssh commands using password
+    - name: build and run
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -14,10 +14,9 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,CONTAINER_NAME
         script: |
-              # Set env variables
               export token=${{ secrets.TELEGRAM_TOKEN }}
 
-              cd /tg-balancer
+              cd tg-balancer
               git pull
               go get -d ./...
               make build
