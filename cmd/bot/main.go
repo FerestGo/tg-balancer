@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/FerestGo/tg-balancer/pkg/balancer"
 	"github.com/FerestGo/tg-balancer/pkg/config"
 	"github.com/FerestGo/tg-balancer/pkg/router"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
@@ -20,6 +21,7 @@ func main() {
 
 	var r router.Router
 	r.Get()
+	balancer.InitExternal()
 	bot, err := tgbotapi.NewBotAPI(cfg.TelegramToken)
 	if err != nil {
 		fmt.Printf("Telegram bot error: %s", err.Error())

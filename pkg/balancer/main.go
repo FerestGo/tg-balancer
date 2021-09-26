@@ -47,7 +47,7 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 	if accountId != 0 && accounts[accountId-1].ID != "" {
 		portfolio, err = client.Portfolio(ctx, accounts[accountId-1].ID)
 		userPortfolio.Analysis(portfolio)
-		mg = "Счёт №" + strconv.Itoa(accountId) + "\n"
+		mg = "Счёт №" + strconv.Itoa(accountId) + ": \n\n"
 	} else if accountId == 0 {
 		for _, account := range accounts {
 			portfolio, err = client.Portfolio(ctx, account.ID)

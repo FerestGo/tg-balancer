@@ -7,6 +7,9 @@ import (
 
 func output(portfolio *Portfolio) string {
 	printer := message.NewPrinter(language.Russian)
+	if portfolio.Total == 0 {
+		return ""
+	}
 	output := ""
 	output += printer.Sprintf("Всего средств: %.2f руб. \n\n", portfolio.Total)
 
