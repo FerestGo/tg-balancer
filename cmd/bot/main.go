@@ -57,6 +57,7 @@ func main() {
 
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, reply)
 		msg.ParseMode = "Markdown"
+		msg.DisableWebPagePreview = true
 		bot.Send(msg)
 
 	}
