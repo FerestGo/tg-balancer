@@ -56,6 +56,7 @@ func main() {
 		fmt.Printf(" | %s \n", duration)
 
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, reply)
+		msg.ParseMode = "Markdown"
 		bot.Send(msg)
 
 	}

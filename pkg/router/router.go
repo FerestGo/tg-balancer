@@ -43,11 +43,39 @@ func (r *Router) Handle(message string, telegramId int) (response string) {
 
 func (r *Router) Get() {
 	r.Add("/start", start, false)
+	r.Add("/faq", faq, false)
 	r.Add(`^t\..*\S$`, balancer.InitAnalysis, true)
 }
 
 func start(command string, telegramId int) (response string) {
-	response = "Это бот"
+	response = `
+Бот предоставляет дополнительную аналитику по портфелю у брокера Тинькофф Инвестиции с анализом фондов. 
+Особенно удобно, когда ваш портфель состоит преимущественно из ETF.
+
+Для получения информации по всем счетам нужно отправить в диалог с ботом ваш [API Token](https://tinkoffcreditsystems.github.io/invest-openapi/auth/), для конкретного счета через пробел его номер (обычно 1 - основной, 2 - ИИС)
+Пример:
+t.frtfnrj32sSw32s41eD23w22ed2Dxwe223DwdwwD
+t.frtfnrj32sSw32s41eD23w22ed2Dxwe223DwdwwD 2
+	
+/faq - часто задаваемые вопросы
+По вопросам, предложениям [сюда](https://t.me/misha_petya)`
+	return response
+}
+
+func faq(command string, telegramId int) (response string) {
+	response = `
+*Как считает валюты?*
+Акции, облигации, валюты - как они отображаются в приложении
+ETF, ПИФ - по валюте фонда т.е. для FXUS будет доллар, а не рубль
+	
+*Как считает географию портфеля?*
+Расчёт идёт только для акций
+	
+*Учитывает ли Вечный Портфель Тинькофф?*
+Да. Сумма позиции / 2 к облигациям, Сумма / 4 к акциям по географии, Сумма / 4 к биржевым товарам (золото),
+
+*Учитывает ли другие смешанные фонды?*
+Сейчас нет`
 	return response
 }
 
