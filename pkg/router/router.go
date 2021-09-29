@@ -2,8 +2,6 @@ package router
 
 import (
 	"regexp"
-
-	"github.com/FerestGo/tg-balancer/pkg/balancer"
 )
 
 type Router struct {
@@ -44,7 +42,7 @@ func (r *Router) Handle(message string, telegramId int) (response string) {
 func (r *Router) Get() {
 	r.Add("/start", start, false)
 	r.Add("/faq", faq, false)
-	r.Add(`^t\..*\S$`, balancer.InitAnalysis, true)
+	// r.Add(`^t\..*\S$`, balancer.InitAnalysis, true)
 }
 
 func start(command string, telegramId int) (response string) {
@@ -58,7 +56,7 @@ t.frtfnrj32sSw32s41eD23w22ed2Dxwe223DwdwwD
 t.frtfnrj32sSw32s41eD23w22ed2Dxwe223DwdwwD 2
 	
 /faq - часто задаваемые вопросы
-По вопросам, предложениям [сюда](https://t.me/misha_petya)`
+Баги, вопросы, предложения [сюда](https://t.me/misha_petya)`
 	return response
 }
 

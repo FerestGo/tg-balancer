@@ -17,6 +17,7 @@ type ETF struct {
 }
 
 var etfs = map[string]ETF{}
+var stocksGeo = map[string]GeographyPosition{}
 var listDeveloped []byte
 var areas map[string]interface{}
 
@@ -35,7 +36,6 @@ func InitExternal() {
 	etfs = map[string]ETF{}
 	err := json.Unmarshal(byteValue, &etfs)
 	errorHandle(err)
-
 	url = "https://gist.githubusercontent.com/FerestGo/97993663b544397735458d85b14049a3/raw/37ac956bd14c146395864cc3b63542ba9cdd0c86/developed.txt"
 
 	req, _ = http.NewRequest("GET", url, nil)
@@ -74,6 +74,10 @@ func GetGeographyETF(ticker string) GeographyPosition {
 }
 
 func GetStockInfo(ticker string) (stock GeographyPosition) {
+	if stocksGeo[ticker].Country != "" {
+		return stocksGeo[ticker]
+	}
+
 	ticker = replaceAt(ticker)
 	url := "https://query1.finance.yahoo.com/v10/finance/quoteSummary/" + ticker + "?modules=assetProfile"
 
@@ -112,10 +116,10 @@ func GetStockInfo(ticker string) (stock GeographyPosition) {
 	stock.MarketType = getMarketCountry(stock.Country)
 	stock.Area = GetArea(stock.Country)
 	stock.Country = replaceCountry(stock.Country)
+	stocksGeo[ticker] = stock
 	return stock
 }
 
-// TODO: сделать нормально
 func replaceCountry(name string) string {
 	replaces := map[string]string{}
 	replaces["USA"] = "США"

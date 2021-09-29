@@ -1,5 +1,5 @@
 name: remote ssh start
-on: [push]
+# on: [push]
 
 jobs:
   build:

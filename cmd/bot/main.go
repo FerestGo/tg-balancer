@@ -10,6 +10,8 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
+const TOKEN_PATTERN = `^t\..*\S$`
+
 func main() {
 	start := time.Now()
 	duration := time.Since(start)
@@ -32,13 +34,17 @@ func main() {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 5
 	updates, err := bot.GetUpdatesChan(u)
+	reply := ""
 
 	for update := range updates {
 		if update.Message == nil {
 			continue
 		}
-		if r.CheckRegexp(`^t\..*\S$`, update.Message.Text) == false {
+		start = time.Now()
+		duration = time.Since(start)
+		if r.CheckRegexp(TOKEN_PATTERN, update.Message.Text) == false {
 			fmt.Printf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, update.Message.Text)
+			reply = r.Handle(update.Message.Text, update.Message.From.ID)
 		} else {
 			fmt.Printf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, "Secret token")
 			deleteMessageConfig := tgbotapi.DeleteMessageConfig{
@@ -49,10 +55,8 @@ func main() {
 			if err != nil {
 				fmt.Errorf("Delete secret token error: %s", err)
 			}
+			reply = balancer.InitAnalysis(update.Message.Text, update.Message.From.ID)
 		}
-		start = time.Now()
-		duration = time.Since(start)
-		reply := r.Handle(update.Message.Text, update.Message.From.ID)
 		fmt.Printf(" | %s \n", duration)
 
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, reply)
