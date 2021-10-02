@@ -39,6 +39,7 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 
 	accounts, err := client.Accounts(ctx)
 	if err != nil {
+		fmt.Errorf("Get account error: %s", err.Error())
 		return "Неверный токен"
 	}
 	var userPortfolio Portfolio
@@ -55,6 +56,7 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 				fmt.Errorf("Portfolio error: %s", err.Error())
 				portfolio, err = client.Portfolio(ctx, account.ID)
 				if err != nil {
+					fmt.Errorf("Get account error: %s", err.Error())
 					mg = "Сейчас брокер не дает полную информацию о портфеле. Такое бывает, попробуйте позже \n"
 				}
 			}
