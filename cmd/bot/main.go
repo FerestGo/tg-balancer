@@ -35,6 +35,7 @@ func main() {
 	u.Timeout = 5
 	updates, err := bot.GetUpdatesChan(u)
 	reply := ""
+	log := ""
 
 	for update := range updates {
 		if update.Message == nil {
@@ -43,10 +44,12 @@ func main() {
 		start = time.Now()
 		duration = time.Since(start)
 		if r.CheckRegexp(TOKEN_PATTERN, update.Message.Text) == false {
-			fmt.Printf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, update.Message.Text)
+			log = fmt.Sprintf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, update.Message.Text)
+			fmt.Print(log)
 			reply = r.Handle(update.Message.Text, update.Message.From.ID)
 		} else {
-			fmt.Printf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, "Secret token")
+			log = fmt.Sprintf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, "Secret token")
+			fmt.Print(log)
 			deleteMessageConfig := tgbotapi.DeleteMessageConfig{
 				ChatID:    update.Message.Chat.ID,
 				MessageID: update.Message.MessageID,
@@ -57,10 +60,15 @@ func main() {
 			}
 			reply = balancer.InitAnalysis(update.Message.Text, update.Message.From.ID)
 		}
+		log += fmt.Sprintf(" | %s \n", duration)
 		fmt.Printf(" | %s \n", duration)
 
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, reply)
 		msg.ParseMode = "Markdown"
+		msg.DisableWebPagePreview = true
+		bot.Send(msg)
+
+		msg = tgbotapi.NewMessage(71783442, log)
 		msg.DisableWebPagePreview = true
 		bot.Send(msg)
 
