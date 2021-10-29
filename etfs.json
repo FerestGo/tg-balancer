@@ -53,6 +53,24 @@
       "marketType": "Развитый"
     }
   },
+  "AKQU": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
+  "AKSC": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
   "AKSP": {
     "Class": "Stock",
     "Currency": "USD",
@@ -545,7 +563,7 @@
     "Geography": {
       "area": "Россия",
       "country": "Россия",
-      "marketType": "Разв��вающийся"
+      "marketType": "Развивающийся"
     }
   },
   "OPNS": {
@@ -620,6 +638,15 @@
       "marketType": "Развивающийся"
     }
   },
+  "RCUS": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
   "RUSB": {
     "Class": "Bond",
     "Currency": "USD",
@@ -666,6 +693,15 @@
     }
   },
   "SBGB": {
+    "Class": "Bond",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Россия",
+      "country": "Россия",
+      "marketType": "Развивающийся"
+    }
+  },
+  "SBMM": {
     "Class": "Bond",
     "Currency": "RUB",
     "Geography": {
@@ -905,6 +941,15 @@
     "Geography": {
       "area": "Мир",
       "country": "Мир",
+      "marketType": "Развивающийся"
+    }
+  },
+  "VTBF": {
+    "Class": "Stock",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Россия",
+      "country": "Россия",
       "marketType": "Развивающийся"
     }
   },

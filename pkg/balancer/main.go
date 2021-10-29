@@ -39,13 +39,13 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 
 	accounts, err := client.Accounts(ctx)
 	if err != nil {
-		if err.Error() == "can't do request to" {
+		if err.Error() == "can't do request to " {
 			return "Сейчас есть проблемы на стороне брокера при получении счетов, попробуйте позже"
 		}
 		if err.Error() == "bad response to https://api-invest.tinkoff.ru/openapi/user/accounts code=401, body=" {
 			return "Неверный токен"
 		}
-		fmt.Errorf("Get account error: %s", err.Error())
+		fmt.Errorf("Get account error: %s", err)
 		return "Сейчас есть не совсем понятная проблема с получением счетов, попробуйте позже с другим токеном"
 	}
 	var userPortfolio Portfolio

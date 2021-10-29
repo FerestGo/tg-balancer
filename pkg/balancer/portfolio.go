@@ -43,6 +43,10 @@ func (portfolio *Portfolio) Analysis(receivedPortfolio sdk.Portfolio) {
 		portfolio.AddPosition(position)
 	}
 
+	for _, currency := range receivedPortfolio.Currencies {
+		portfolio.AddCurrency(currency)
+	}
+
 	return
 }
 
@@ -66,6 +70,17 @@ func (portfolio *Portfolio) AddPosition(position sdk.PositionBalance) (receivedP
 	SetCurrency(currentPosition, portfolio)
 
 	portfolio.Total += currentPosition.Sum
+
+	return
+}
+
+func (portfolio *Portfolio) AddCurrency(currency sdk.CurrencyBalance) (receivedPortfolio *sdk.Portfolio) {
+
+	if currency.Currency == "RUB" {
+		portfolio.Currency.RUB += currency.Balance
+		portfolio.Types.Currency += currency.Balance
+		portfolio.Total += currency.Balance
+	}
 
 	return
 }
