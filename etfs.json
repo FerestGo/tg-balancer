@@ -8,6 +8,15 @@
       "marketType": "Развивающийся"
     }
   },
+  "AKEB": {
+    "Class": "Bond",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Развивающийся"
+    }
+  },
   "AKEU": {
     "Class": "Stock",
     "Currency": "EUR",
@@ -78,6 +87,15 @@
       "area": "Америка",
       "country": "США",
       "marketType": "Развитый"
+    }
+  },
+  "AKVG": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Все"
     }
   },
   "AMCC": {
@@ -251,6 +269,24 @@
       "marketType": "Развивающийся"
     }
   },
+  "BCSH": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
+  "BCSY": {
+    "Class": "Bond",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Все"
+    }
+  },
   "DIVD": {
     "Class": "Stock",
     "Currency": "RUB",
@@ -312,6 +348,15 @@
       "area": "Мир",
       "country": "Фонд без США",
       "marketType": "Развитый"
+    }
+  },
+  "FXEM": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Развивающийся"
     }
   },
   "FXES": {
@@ -404,6 +449,15 @@
       "marketType": "Развитый"
     }
   },
+  "FXRE": {
+    "Class": "REIT",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
   "FXRL": {
     "Class": "Stock",
     "Currency": "USD",
@@ -467,6 +521,15 @@
       "marketType": "Все"
     }
   },
+  "GLVD": {
+    "Class": "Stock",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Все"
+    }
+  },
   "GPBM": {
     "Class": "Bond",
     "Currency": "RUB",
@@ -485,6 +548,15 @@
       "marketType": "Развивающийся"
     }
   },
+  "GQGD": {
+    "Class": "Stock",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Все"
+    }
+  },
   "GROD": {
     "Class": "Stock",
     "Currency": "RUB",
@@ -494,12 +566,30 @@
       "marketType": "Развивающийся"
     }
   },
+  "GSCD": {
+    "Class": "Stock",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Все"
+    }
+  },
   "INEM": {
     "Class": "Bond",
     "Currency": "USD",
     "Geography": {
       "area": "Мир",
       "country": "Мир",
+      "marketType": "Развивающийся"
+    }
+  },
+  "INFL": {
+    "Class": "Bond",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Россия",
+      "country": "Россия",
       "marketType": "Развивающийся"
     }
   },
@@ -647,6 +737,24 @@
       "marketType": "Развитый"
     }
   },
+  "RQIE": {
+    "Class": "Mixed",
+    "Currency": "EUR",
+    "Geography": {
+      "area": "Европа",
+      "country": "Мир",
+      "marketType": "Развитый"
+    }
+  },
+  "RQIU": {
+    "Class": "Mixed",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
   "RUSB": {
     "Class": "Bond",
     "Currency": "USD",
@@ -694,6 +802,15 @@
   },
   "SBGB": {
     "Class": "Bond",
+    "Currency": "RUB",
+    "Geography": {
+      "area": "Россия",
+      "country": "Россия",
+      "marketType": "Развивающийся"
+    }
+  },
+  "SBHI": {
+    "Class": "Stock",
     "Currency": "RUB",
     "Geography": {
       "area": "Россия",
@@ -809,6 +926,15 @@
       "marketType": "Развивающийся"
     }
   },
+  "TBEU": {
+    "Class": "Bond",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Все"
+    }
+  },
   "TBIO": {
     "Class": "Stock",
     "Currency": "USD",
@@ -827,6 +953,24 @@
       "marketType": "Развивающийся"
     }
   },
+  "TBUY": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
+  "TCBR": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
   "TECH": {
     "Class": "Stock",
     "Currency": "USD",
@@ -836,12 +980,39 @@
       "marketType": "Развитый"
     }
   },
+  "TEMS": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Развивающийся"
+    }
+  },
   "TEUR": {
     "Class": "Mixed",
     "Currency": "EUR",
     "Geography": {
       "area": "Европа",
       "country": "Мир",
+      "marketType": "Развитый"
+    }
+  },
+  "TEUS": {
+    "Class": "Stock",
+    "Currency": "EUR",
+    "Geography": {
+      "area": "Европа",
+      "country": "Мир",
+      "marketType": "Развитый"
+    }
+  },
+  "TFNX": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
       "marketType": "Развитый"
     }
   },
@@ -881,6 +1052,24 @@
       "marketType": "Развивающийся"
     }
   },
+  "TPAS": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "АТР",
+      "country": "Мир",
+      "marketType": "Все"
+    }
+  },
+  "TRAI": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
+    }
+  },
   "TRUR": {
     "Class": "Mixed",
     "Currency": "RUB",
@@ -888,6 +1077,15 @@
       "area": "Россия",
       "country": "Россия",
       "marketType": "Развивающийся"
+    }
+  },
+  "TSOX": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Америка",
+      "country": "США",
+      "marketType": "Развитый"
     }
   },
   "TSPV": {
@@ -903,9 +1101,18 @@
     "Class": "Stock",
     "Currency": "USD",
     "Geography": {
-      "area": "Америка",
+      "area": "Аме��ика",
       "country": "США",
       "marketType": "Развитый"
+    }
+  },
+  "TSST": {
+    "Class": "Stock",
+    "Currency": "USD",
+    "Geography": {
+      "area": "Мир",
+      "country": "Мир",
+      "marketType": "Развивающийся"
     }
   },
   "TUSD": {
