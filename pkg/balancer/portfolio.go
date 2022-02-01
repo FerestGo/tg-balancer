@@ -47,6 +47,11 @@ func (portfolio *Portfolio) Analysis(receivedPortfolio sdk.Portfolio) {
 		portfolio.AddCurrency(currency)
 	}
 
+	// if receivedPortfolio.Positions[0].Ticker == "AAPL" {
+	//  test := receivedPortfolio.Positions[0]
+	//  test.Balance = 50
+	//  portfolio.AddPosition(test)
+	// }
 	return
 }
 

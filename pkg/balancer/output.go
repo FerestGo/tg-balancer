@@ -5,7 +5,7 @@ import (
 	"golang.org/x/text/message"
 )
 
-func output(portfolio *Portfolio) string {
+func Output(portfolio *Portfolio) string {
 	printer := message.NewPrinter(language.Russian)
 	if portfolio.Total == 0 {
 		return ""
@@ -17,6 +17,7 @@ func output(portfolio *Portfolio) string {
 	output += printer.Sprintf("Акции %.1f%% (%.0f р.) \n", portfolio.PercentType.Stock, portfolio.Types.Stock)
 	output += printer.Sprintf("Облигации %.1f%% (%.0f р.) \n", portfolio.PercentType.Bonds, portfolio.Types.Bonds)
 	output += printer.Sprintf("Валюта %.1f%% (%.0f р.) \n", portfolio.PercentType.Currency, portfolio.Types.Currency)
+	// output += printer.Sprintf("Валюта 2,6%% (20 126 р.) 	\n")
 	output += printer.Sprintf("Биржевые товары %.1f%% (%.0f р.) \n", portfolio.PercentType.Goods, portfolio.Types.Goods)
 	if portfolio.PercentType.UndefinedEtf > 0 {
 		output += printer.Sprintf("Неизвестные ETF %.1f%% (%.0f р.) \n", portfolio.PercentType.UndefinedEtf, portfolio.Types.UndefinedEtf)

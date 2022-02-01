@@ -2,6 +2,7 @@ package balancer
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -54,6 +55,8 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 	if accountId != 0 && accounts[accountId-1].ID != "" {
 		portfolio, err = client.Portfolio(ctx, accounts[accountId-1].ID)
 		userPortfolio.Analysis(portfolio)
+		jsonPortfolio, _ := json.Marshal(portfolio)
+		fmt.Printf(string(jsonPortfolio))
 		mg = "Счёт №" + strconv.Itoa(accountId) + ": \n\n"
 	} else if accountId == 0 {
 		for _, account := range accounts {
@@ -73,5 +76,5 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 	}
 	userPortfolio.SetPercent()
 
-	return mg + output(&userPortfolio)
+	return mg + Output(&userPortfolio)
 }

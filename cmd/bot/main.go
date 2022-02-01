@@ -43,12 +43,12 @@ func main() {
 		}
 		start = time.Now()
 		duration = time.Since(start)
-		if r.CheckRegexp(TOKEN_PATTERN, update.Message.Text) == false {
-			log = fmt.Sprintf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, update.Message.Text)
+		if !r.CheckRegexp(TOKEN_PATTERN, update.Message.Text) {
+			log = fmt.Sprintf("%s: %s", update.Message.From.UserName, update.Message.Text)
 			fmt.Print(log)
 			reply = r.Handle(update.Message.Text, update.Message.From.ID)
 		} else {
-			log = fmt.Sprintf("%d User: %d [%s] %s %s - '%s'", update.Message.MessageID, update.Message.From.ID, update.Message.From.UserName, update.Message.From.FirstName, update.Message.From.LastName, "Secret token")
+			log = fmt.Sprintf("%s: %s", update.Message.From.UserName, "Secret")
 			fmt.Print(log)
 			deleteMessageConfig := tgbotapi.DeleteMessageConfig{
 				ChatID:    update.Message.Chat.ID,
@@ -60,8 +60,8 @@ func main() {
 			}
 			reply = balancer.InitAnalysis(update.Message.Text, update.Message.From.ID)
 		}
-		log += fmt.Sprintf(" | %s \n", duration)
-		fmt.Printf(" | %s \n", duration)
+		log += fmt.Sprintf(" %s \n", duration)
+		fmt.Printf(" %s \n", duration)
 
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, reply)
 		msg.ParseMode = "Markdown"

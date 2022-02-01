@@ -26,6 +26,7 @@ type Errors struct {
 
 type Config struct {
 	TelegramToken string
+	T_Token       string
 	BotURL        string `mapstructure:"bot_url"`
 
 	Messages Messages
@@ -67,6 +68,7 @@ func fromEnv(cfg *Config) error {
 	_ = godotenv.Load()
 
 	cfg.TelegramToken = os.Getenv("token")
+	cfg.T_Token = os.Getenv("t_token")
 
 	return nil
 }
