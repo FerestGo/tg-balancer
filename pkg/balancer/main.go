@@ -2,23 +2,30 @@ package balancer
 
 import (
 	"context"
-	"encoding/json"
+	"crypto/tls"
 	"fmt"
+	"log"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
-	sdk "github.com/TinkoffCreditSystems/invest-openapi-go-sdk"
+	"golang.org/x/oauth2"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/credentials/oauth"
+
+	t "github.com/FerestGo/investapi"
 )
 
-var client sdk.RestClient
+var conn *grpc.ClientConn
 
 func InitAnalysis(message string, telegramId int) string {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
 	token, accountId := getAccount(message)
+	token = "t.5JvCmeRyYnh1c_0r9Jon29O_q2Yw_Rri3M_IRsyLY4PPoFfyZRaoEJ73AQ_V4E53032nagukjgd9NZqn4DbuWQ" // TODO: удалить
 	output := initAnalysis(ctx, token, accountId)
 	return output
 }
@@ -36,39 +43,45 @@ func getAccount(message string) (token string, account int) {
 
 func initAnalysis(ctx context.Context, token string, accountId int) string {
 	mg := ""
-	client = *sdk.NewRestClient(token)
+	conn, err := grpc.Dial("invest-public-api.tinkoff.ru:443",
+		grpc.WithTransportCredentials(credentials.NewTLS(&tls.Config{})),
+		grpc.WithPerRPCCredentials(oauth.NewOauthAccess(&oauth2.Token{
+			AccessToken: token,
+		})))
 
-	accounts, err := client.Accounts(ctx)
 	if err != nil {
+		log.Fatalf("did not connect: %v", err)
+	}
+	defer conn.Close()
+	accounts, err := t.NewUsersServiceClient(conn).GetAccounts(context.Background(), &t.GetAccountsRequest{})
+
+	if err != nil {
+		// TODO: обновить все ошибки
 		if err.Error() == "can't do request to " {
 			return "Сейчас есть проблемы на стороне брокера при получении счетов, попробуйте позже"
 		}
 		if err.Error() == "bad response to https://api-invest.tinkoff.ru/openapi/user/accounts code=401, body=" {
 			return "Неверный токен"
 		}
-		fmt.Errorf("Get account error: %s", err)
-		return "Сейчас есть не совсем понятная проблема с получением счетов, попробуйте позже с другим токеном"
+		fmt.Println("Get account error: %s", err)
+		return "Сейчас есть не совсем понятная проблема с получением счетов, попробуйте позже с другим токеном." + err.Error()
 	}
 	var userPortfolio Portfolio
-	var portfolio sdk.Portfolio
+	var portfolio *t.PortfolioResponse
 
-	if accountId != 0 && accounts[accountId-1].ID != "" {
-		portfolio, err = client.Portfolio(ctx, accounts[accountId-1].ID)
+	if accountId != 0 && accounts.Accounts[accountId-1].Id != "" {
+		portfolio, err = t.NewOperationsServiceClient(conn).GetPortfolio(ctx, &t.PortfolioRequest{
+			AccountId: accounts.Accounts[accountId-1].Id,
+		})
+		// TODO: обработка err
 		userPortfolio.Analysis(portfolio)
-		jsonPortfolio, _ := json.Marshal(portfolio)
-		fmt.Printf(string(jsonPortfolio))
 		mg = "Счёт №" + strconv.Itoa(accountId) + ": \n\n"
 	} else if accountId == 0 {
-		for _, account := range accounts {
-			portfolio, err = client.Portfolio(ctx, account.ID)
-			if err != nil {
-				fmt.Errorf("Portfolio error: %s", err.Error())
-				portfolio, err = client.Portfolio(ctx, account.ID)
-				if err != nil {
-					fmt.Errorf("Get account error: %s", err.Error())
-					mg = "Сейчас брокер не дает полную информацию о портфеле. Такое бывает, попробуйте позже \n"
-				}
-			}
+		for _, account := range accounts.Accounts {
+			portfolio, err = t.NewOperationsServiceClient(conn).GetPortfolio(context.Background(), &t.PortfolioRequest{
+				AccountId: account.Id,
+			})
+			// TODO: обработка err
 			userPortfolio.Analysis(portfolio)
 		}
 	} else {

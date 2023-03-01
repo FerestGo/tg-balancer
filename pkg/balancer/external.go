@@ -1,12 +1,21 @@
 package balancer
 
 import (
+	"context"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"regexp"
 	"strings"
+
+	t "github.com/FerestGo/investapi"
+	"golang.org/x/oauth2"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/credentials/oauth"
 )
 
 type ETF struct {
@@ -73,50 +82,29 @@ func GetGeographyETF(ticker string) GeographyPosition {
 	return etfs[ticker].GeographyPosition
 }
 
-func GetStockInfo(ticker string) (stock GeographyPosition) {
-	if stocksGeo[ticker].Country != "" {
-		return stocksGeo[ticker]
+func GetStockInfo(figi string) (stock GeographyPosition) {
+	// TODO: убрать
+	token := "t.5JvCmeRyYnh1c_0r9Jon29O_q2Yw_Rri3M_IRsyLY4PPoFfyZRaoEJ73AQ_V4E53032nagukjgd9NZqn4DbuWQ"
+	conn, err := grpc.Dial("invest-public-api.tinkoff.ru:443",
+		grpc.WithTransportCredentials(credentials.NewTLS(&tls.Config{})),
+		grpc.WithPerRPCCredentials(oauth.NewOauthAccess(&oauth2.Token{
+			AccessToken: token,
+		})))
+	if err != nil {
+		log.Fatalf("did not connect: %v", err)
 	}
-
-	ticker = replaceAt(ticker)
-	url := "https://query1.finance.yahoo.com/v10/finance/quoteSummary/" + ticker + "?modules=assetProfile"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	var result map[string]interface{}
-
-	json.Unmarshal([]byte(body), &result)
-	if res.StatusCode == 200 {
-		stock.Country = result["quoteSummary"].(map[string]interface{})["result"].([]interface{})[0].(map[string]interface{})["assetProfile"].(map[string]interface{})["country"].(string)
-		if stock.Country == "United States" {
-			stock.Country = "USA"
-		}
-	} else {
-		url = "https://query1.finance.yahoo.com/v10/finance/quoteSummary/" + ticker + ".ME?modules=assetProfile"
-
-		req, _ = http.NewRequest("GET", url, nil)
-
-		res, _ = http.DefaultClient.Do(req)
-
-		defer res.Body.Close()
-		body, _ = ioutil.ReadAll(res.Body)
-
-		var result map[string]interface{}
-
-		json.Unmarshal([]byte(body), &result)
-		if res.StatusCode == 200 {
-			stock.Country = result["quoteSummary"].(map[string]interface{})["result"].([]interface{})[0].(map[string]interface{})["assetProfile"].(map[string]interface{})["country"].(string)
-		}
-	}
+	defer conn.Close()
+	insturement, _ := t.NewInstrumentsServiceClient(conn).GetInstrumentBy(context.Background(), &t.InstrumentRequest{
+		IdType:    t.InstrumentIdType_INSTRUMENT_ID_TYPE_FIGI,
+		ClassCode: "",
+		Id:        figi,
+	})
+	// TODO обработка ошибки
+	stock.Country = insturement.Instrument.CountryOfRiskName
 	stock.MarketType = getMarketCountry(stock.Country)
 	stock.Area = GetArea(stock.Country)
 	stock.Country = replaceCountry(stock.Country)
-	stocksGeo[ticker] = stock
+	stocksGeo[insturement.Instrument.Ticker] = stock
 	return stock
 }
 

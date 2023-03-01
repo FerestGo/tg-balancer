@@ -1,6 +1,7 @@
 package balancer
 
 import (
+	t "github.com/FerestGo/investapi"
 	sdk "github.com/TinkoffCreditSystems/invest-openapi-go-sdk"
 )
 
@@ -37,15 +38,16 @@ type Geography struct {
 	MarketType map[string]float64
 }
 
-func (portfolio *Portfolio) Analysis(receivedPortfolio sdk.Portfolio) {
+func (portfolio *Portfolio) Analysis(receivedPortfolio *t.PortfolioResponse) {
 
 	for _, position := range receivedPortfolio.Positions {
 		portfolio.AddPosition(position)
 	}
 
-	for _, currency := range receivedPortfolio.Currencies {
-		portfolio.AddCurrency(currency)
-	}
+	// TODO: обработка валют если нужна
+	// for _, currency := range receivedPortfolio.Currencies {
+	// 	portfolio.AddCurrency(currency)
+	// }
 
 	// if receivedPortfolio.Positions[0].Ticker == "AAPL" {
 	//  test := receivedPortfolio.Positions[0]
@@ -55,9 +57,10 @@ func (portfolio *Portfolio) Analysis(receivedPortfolio sdk.Portfolio) {
 	return
 }
 
-func (portfolio *Portfolio) AddPosition(position sdk.PositionBalance) (receivedPortfolio *sdk.Portfolio) {
+func (portfolio *Portfolio) AddPosition(position *t.PortfolioPosition) {
 	currentPosition := GetPosition(position)
 
+	// TODO: вспомнить зачем это
 	if portfolio.StockGeography.MarketType == nil {
 		portfolio.StockGeography.MarketType = map[string]float64{}
 		portfolio.PercentStockGeography.MarketType = map[string]float64{}
@@ -81,7 +84,7 @@ func (portfolio *Portfolio) AddPosition(position sdk.PositionBalance) (receivedP
 
 func (portfolio *Portfolio) AddCurrency(currency sdk.CurrencyBalance) (receivedPortfolio *sdk.Portfolio) {
 
-	if currency.Currency == "RUB" {
+	if currency.Currency == "rub" {
 		portfolio.Currency.RUB += currency.Balance
 		portfolio.Types.Currency += currency.Balance
 		portfolio.Total += currency.Balance
@@ -121,7 +124,7 @@ func (portfolio *Portfolio) SetPercent() {
 }
 
 func SetGeography(currentPosition Position, portfolio *Portfolio) {
-	if currentPosition.Type == "Stock" {
+	if currentPosition.Type == "share" {
 		if currentPosition.GeographyPosition.Country == "" {
 			currentPosition.GeographyPosition = GetStockInfo(currentPosition.Ticker)
 		}
@@ -134,13 +137,13 @@ func SetGeography(currentPosition Position, portfolio *Portfolio) {
 func SetType(currentPosition Position, portfolio *Portfolio) {
 
 	switch currentPosition.Type {
-	case "Currency":
+	case "currency":
 		portfolio.Types.Currency += currentPosition.Sum
-	case "Bond":
+	case "bond":
 		portfolio.Types.Bonds += currentPosition.Sum
-	case "Stock":
+	case "share":
 		portfolio.Types.Stock += currentPosition.Sum
-	case "Balanced":
+	case "balanced":
 		break
 	default:
 		portfolio.Types.UndefinedEtf += currentPosition.Sum
@@ -149,11 +152,11 @@ func SetType(currentPosition Position, portfolio *Portfolio) {
 
 func SetCurrency(currentPosition Position, portfolio *Portfolio) {
 	switch currentPosition.Currency {
-	case "RUB":
+	case "rub":
 		portfolio.Currency.RUB += currentPosition.Sum
-	case "USD":
+	case "usd":
 		portfolio.Currency.USD += currentPosition.Sum
-	case "EUR":
+	case "eur":
 		portfolio.Currency.EUR += currentPosition.Sum
 	}
 }

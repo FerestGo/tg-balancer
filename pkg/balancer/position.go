@@ -1,9 +1,10 @@
 package balancer
 
-import sdk "github.com/TinkoffCreditSystems/invest-openapi-go-sdk"
+import t "github.com/FerestGo/investapi"
 
 type Position struct {
 	Ticker            string
+	Figi              string
 	Currency          string
 	Type              string
 	GeographyPosition GeographyPosition `json:"Geography"`
@@ -16,16 +17,17 @@ type GeographyPosition struct {
 	MarketType string `json:"marketType"`
 }
 
-func GetPosition(receivedPosition sdk.PositionBalance) (currentPosition Position) {
-	currentPosition.Ticker = receivedPosition.Ticker
+func GetPosition(receivedPosition *t.PortfolioPosition) (currentPosition Position) {
+	currentPosition.Figi = receivedPosition.Figi
 	currency := GetCurrency(string(receivedPosition.AveragePositionPrice.Currency))
-	currentPosition.Sum = ((receivedPosition.AveragePositionPrice.Value * receivedPosition.Balance) + receivedPosition.ExpectedYield.Value) * currency
+	currentPosition.Sum = ((float64(receivedPosition.AveragePositionPrice.Units) * float64(receivedPosition.Quantity.Units)) + float64(receivedPosition.ExpectedYield.Units)) * currency
 
-	currentPosition.GeographyPosition = GetGeographyETF(receivedPosition.Ticker)
-	currentPosition.Type, currentPosition.Currency = GetTypeETF(receivedPosition.Ticker)
+	currentPosition.GeographyPosition = GetStockInfo(receivedPosition.Figi)
+	currentPosition.Currency = receivedPosition.AveragePositionPrice.Currency
+	// currentPosition.Type, currentPosition.Currency = GetTypeETF(receivedPosition.Figi)
 
-	if receivedPosition.InstrumentType == "Bond" || receivedPosition.InstrumentType == "Stock" {
-		currentPosition.Currency = string(receivedPosition.ExpectedYield.Currency)
+	if receivedPosition.InstrumentType == "bond" || receivedPosition.InstrumentType == "share" {
+		currentPosition.Currency = receivedPosition.AveragePositionPrice.Currency
 		currentPosition.Type = string(receivedPosition.InstrumentType)
 	}
 
@@ -33,19 +35,21 @@ func GetPosition(receivedPosition sdk.PositionBalance) (currentPosition Position
 		currentPosition.Type = "Currency"
 	}
 
-	if receivedPosition.Ticker == "USD000UTSTOM" {
+	// TODO: подставить новые figi для валют
+	if receivedPosition.Figi == "USD000UTSTOM" {
 		currentPosition.Currency = "USD"
 		currentPosition.GeographyPosition.Country = "USA"
 	}
 
-	if receivedPosition.Ticker == "EUR_RUB__TOM" {
+	if receivedPosition.Figi == "EUR_RUB__TOM" {
 		currentPosition.Currency = "EUR"
 		currentPosition.GeographyPosition.Country = "Europe"
 	}
 
-	if receivedPosition.Ticker == "TRUR" || receivedPosition.Ticker == "TEUR" || receivedPosition.Ticker == "TUSD" {
-		currentPosition.Type = "Balanced"
-	}
+	// TODO: FIGI вечных портфелей
+	// if receivedPosition.Ticker == "TRUR" || receivedPosition.Ticker == "TEUR" || receivedPosition.Ticker == "TUSD" {
+	// 	currentPosition.Type = "Balanced"
+	// }
 
 	return currentPosition
 }
