@@ -83,8 +83,6 @@ func GetGeographyETF(ticker string) GeographyPosition {
 }
 
 func GetStockInfo(figi string) (stock GeographyPosition) {
-	// TODO: убрать
-	token := "t.5JvCmeRyYnh1c_0r9Jon29O_q2Yw_Rri3M_IRsyLY4PPoFfyZRaoEJ73AQ_V4E53032nagukjgd9NZqn4DbuWQ"
 	conn, err := grpc.Dial("invest-public-api.tinkoff.ru:443",
 		grpc.WithTransportCredentials(credentials.NewTLS(&tls.Config{})),
 		grpc.WithPerRPCCredentials(oauth.NewOauthAccess(&oauth2.Token{

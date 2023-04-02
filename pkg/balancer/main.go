@@ -25,7 +25,6 @@ func InitAnalysis(message string, telegramId int) string {
 	defer cancel()
 
 	token, accountId := getAccount(message)
-	token = "t.5JvCmeRyYnh1c_0r9Jon29O_q2Yw_Rri3M_IRsyLY4PPoFfyZRaoEJ73AQ_V4E53032nagukjgd9NZqn4DbuWQ" // TODO: удалить
 	output := initAnalysis(ctx, token, accountId)
 	return output
 }
