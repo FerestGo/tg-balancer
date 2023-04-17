@@ -34,6 +34,9 @@ func GetPosition(receivedPosition *t.PortfolioPosition) (currentPosition Positio
 	if receivedPosition.InstrumentType == "Currency" {
 		currentPosition.Type = "Currency"
 	}
+	if receivedPosition.GetInstrumentType() == "Etf" {
+		currentPosition.Type = "Etf"
+	}
 
 	// TODO: подставить новые figi для валют
 	if receivedPosition.Figi == "USD000UTSTOM" {

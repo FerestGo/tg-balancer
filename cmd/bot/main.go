@@ -13,6 +13,10 @@ import (
 const TOKEN_PATTERN = `^t\..*\S$`
 
 func main() {
+	initApp()
+}
+
+func initApp() {
 	start := time.Now()
 	duration := time.Since(start)
 
@@ -38,15 +42,17 @@ func main() {
 	log := ""
 
 	for update := range updates {
-		if update.Message == nil {
+		mg := update.Message
+
+		if mg == nil {
 			continue
 		}
 		start = time.Now()
 		duration = time.Since(start)
-		if !r.CheckRegexp(TOKEN_PATTERN, update.Message.Text) {
-			log = fmt.Sprintf("%s: %s", update.Message.From.UserName, update.Message.Text)
+		if !r.CheckRegexp(TOKEN_PATTERN, mg.Text) {
+			log = fmt.Sprintf("%s: %s", mg.From.UserName, mg.Text)
 			fmt.Print(log)
-			reply = r.Handle(update.Message.Text, update.Message.From.ID)
+			reply = r.Handle(mg.Text, mg.From.ID)
 		} else {
 			log = fmt.Sprintf("%s: %s", update.Message.From.UserName, "Secret")
 			fmt.Print(log)
@@ -56,7 +62,7 @@ func main() {
 			}
 			_, err := bot.DeleteMessage(deleteMessageConfig)
 			if err != nil {
-				fmt.Errorf("Delete secret token error: %s", err)
+				fmt.Printf("Delete secret token error: %s", err)
 			}
 			reply = balancer.InitAnalysis(update.Message.Text, update.Message.From.ID)
 		}

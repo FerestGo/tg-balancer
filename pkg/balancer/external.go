@@ -51,7 +51,7 @@ func InitExternal() {
 
 	res, err = http.DefaultClient.Do(req)
 	if err != nil {
-		fmt.Errorf("Cant get market country %s:", err.Error())
+		fmt.Printf("Cant get market country %s:", err.Error())
 	}
 	jsonFile = res.Body
 
@@ -84,6 +84,7 @@ func GetGeographyETF(ticker string) GeographyPosition {
 
 func GetStockInfo(figi string) (stock GeographyPosition) {
 	token := "" // TODO: пробросить токен
+	// TODO вынести работу со стоком и коннект в отдельную структуру
 	conn, err := grpc.Dial("invest-public-api.tinkoff.ru:443",
 		grpc.WithTransportCredentials(credentials.NewTLS(&tls.Config{})),
 		grpc.WithPerRPCCredentials(oauth.NewOauthAccess(&oauth2.Token{
@@ -93,11 +94,15 @@ func GetStockInfo(figi string) (stock GeographyPosition) {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
+
+	// TODO: тут проблема получения инструмента
 	insturement, _ := t.NewInstrumentsServiceClient(conn).GetInstrumentBy(context.Background(), &t.InstrumentRequest{
-		IdType:    t.InstrumentIdType_INSTRUMENT_ID_TYPE_FIGI,
-		ClassCode: "",
-		Id:        figi,
+		IdType: t.InstrumentIdType_INSTRUMENT_ID_TYPE_FIGI,
+		Id:     figi,
 	})
+	if insturement == nil {
+		return stock
+	}
 	// TODO обработка ошибки
 	stock.Country = insturement.Instrument.CountryOfRiskName
 	stock.MarketType = getMarketCountry(stock.Country)

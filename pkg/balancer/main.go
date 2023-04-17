@@ -62,8 +62,8 @@ func initAnalysis(ctx context.Context, token string, accountId int) string {
 		if err.Error() == "bad response to https://api-invest.tinkoff.ru/openapi/user/accounts code=401, body=" {
 			return "Неверный токен"
 		}
-		fmt.Println("Get account error: %s", err)
-		return "Сейчас есть не совсем понятная проблема с получением счетов, попробуйте позже с другим токеном." + err.Error()
+		fmt.Printf("Get account error: %s \n", err)
+		return "Ошибка получения аккаунта:." + err.Error()
 	}
 	var userPortfolio Portfolio
 	var portfolio *t.PortfolioResponse
